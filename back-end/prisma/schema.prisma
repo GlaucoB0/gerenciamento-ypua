@@ -9,6 +9,67 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Funcionario {
+  funcionario_id String @id @default(uuid())
+
+  nome String @db.VarChar(255)
+  funcao String @db.VarChar(80)
+  cpf String @db.VarChar(14)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  reservas Reserva[]
+}
+
+model Cliente {
+  cliente_id String @id @default(uuid())
+
+  nome String @db.VarChar(255)
+  email String @db.VarChar(255)
+  telefone String @db.VarChar(16)
+  cpf String @db.VarChar(14)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  reservas Reserva[]
+}
+
+model Quarto {
+  quarto_id String @id @default(uuid())
+
+  identificacao String @db.TinyText
+  camas_solteiros Int
+  cama_casais Int
+  qtda_banheiros Int
+  preco Decimal @db.Decimal(5,2)
+  disponivel Boolean
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  
+  reservas Reserva[]
+}
+
+model Reserva {
+  reserva_id String @id @default(uuid())
+
+  //relations
+  cliente Cliente @relation(fields: [cliente_id], references: [cliente_id])
+  cliente_id String
+  quarto Quarto @relation(fields: [quarto_id], references: [quarto_id])
+  quarto_id String
+  funcionario Funcionario @relation(fields: [funcionario_id], references: [funcionario_id])
+  funcionario_id String
+
+  check_in DateTime
+  check_out DateTime
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
 }
