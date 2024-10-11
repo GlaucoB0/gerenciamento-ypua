@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { createClientSchema } from "../helpers/zodValidations";
 import {Clientes} from '../interfaces/interfaces';
-import {createClientService} from '../services/clientesServices'
+import {createClientService, birthValidation} from '../services/clientesServices'
 import formatZodError from '../helpers/formatZodError';
 
 export const criarCliente = async (req: Request, res: Response) => {
@@ -12,6 +12,8 @@ export const criarCliente = async (req: Request, res: Response) => {
             return res.status(400).json({message: "Os dados recebidos no corpo da aplicação são invalidos", detalhes: formatZodError(bodyValidation.error)});
         }
 
+        birthValidation(bodyValidation.data.data_nascimento);
+        
         const client:Clientes = bodyValidation.data;
         const clienteCriado = await createClientService(client);
         if(!clienteCriado){
@@ -22,4 +24,4 @@ export const criarCliente = async (req: Request, res: Response) => {
         console.error(error)
         res.status(500).json({error: error})
     }
-}   
+}
