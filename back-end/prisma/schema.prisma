@@ -33,10 +33,11 @@ model Cliente {
   email String @db.VarChar(255)
   cep String
   numero Int
-  endereco String
-  bairro String
-  cidade String
-  estado String
+  endereco String @db.VarChar(300)
+  bairro String @db.Char(50)
+  cidade String @db.Char(60)
+  estado String @db.Char(2)
+  pais String @db.Char(2)
   telefone String @db.VarChar(16)
   cpf String @db.VarChar(14)
 
