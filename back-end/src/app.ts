@@ -14,6 +14,8 @@ app.get("*", (req: Request, res: Response) => {
     res.json({message: "Rota não encontrada"})
 })
 
+app.use('/', router)
+
 app.listen(PORT, () => {
     console.log(`Server Open in Port => ${PORT}`);
 })
