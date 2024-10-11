@@ -31,7 +31,7 @@ model Cliente {
 
   nome String @db.VarChar(255)
   email String @db.VarChar(255)
-  cep Int
+  cep String
   numero Int
   endereco String
   bairro String
