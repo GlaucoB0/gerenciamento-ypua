@@ -31,6 +31,12 @@ model Cliente {
 
   nome String @db.VarChar(255)
   email String @db.VarChar(255)
+  cep Int
+  numero Int
+  endereco String
+  bairro String
+  cidade String
+  estado String
   telefone String @db.VarChar(16)
   cpf String @db.VarChar(14)
 
