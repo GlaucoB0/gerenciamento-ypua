@@ -17,7 +17,7 @@ model Funcionario {
   funcionario_id String @id @default(uuid())
 
   nome String @db.VarChar(255)
-  funcao String @db.VarChar(80)
+  funcao funcao @default(funcionario)
   cpf String @db.VarChar(14)
 
   created_at DateTime @default(now())
@@ -49,6 +49,7 @@ model Quarto {
   qtda_banheiros Int
   preco Decimal @db.Decimal(5,2)
   disponivel Boolean
+  image String
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -72,4 +73,9 @@ model Reserva {
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
+}
+
+enum funcao{
+  admin
+  funcionario
 }
