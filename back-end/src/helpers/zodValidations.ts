@@ -11,7 +11,7 @@ export const createClientSchema = z.object({
     email: z.string({message: "O Email deve ser uma string!"}).email({message: "O Email deve ser no formato de email: nome@email.com"}).max(255, {message: "O Email deve conter no máximo 255 caracteres"}),
     cep: z.string({message: "O Cep deve ser uma string!"}).regex(cepRegex, {message: "O CEP deve seguir este modelo: XXXXX-XXX onde X é um númerico"}),
     endereco: z.string({message: "O Endereço deve ser uma string"}).max(300, {message: "O endereço deve conter no máximo 300 caracteres"}).min(10, {message: "O Endereço deve conter no mínimo 10 caracteres"}),
-    rua: z.string({message: "A Rua deve ser uma string"}).max(50, {message: "A rua deve conter no máximo 50 caracteres"}).min(2, {message: "A Rua deve conter no mínimo 2 caracteres"}),
+    bairro: z.string({message: "O Bairro deve ser uma string"}).max(50, {message: "O Bairro deve conter no máximo 50 caracteres"}).min(2, {message: "O Bairro deve conter no mínimo 2 caracteres"}),
     cidade: z.string({message: "A Cidade deve ser uma string"}).max(100, {message: "A Cidade deve conter no máximo 100 caracteres"}).min(3, {message: "A Cidade deve conter no mínimo 3 caracteres"}),
     estado: z.string({message: "O Estado deve ser uma string"}).max(2, {message: "Deve conter no máximo 2 caracteres"}).regex(stateRegex, {message: "Deve seguir o modelo: XX onde X é uma letra"}),
     pais: z.string({message: "O Pais deve ser uma string"}).max(2, {message: "Deve conter no máximo 2 caracteres"}).regex(stateRegex, {message: "Deve seguir o modelo: XX onde X é uma letra"}),
