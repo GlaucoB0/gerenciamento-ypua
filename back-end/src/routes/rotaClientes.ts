@@ -5,6 +5,6 @@ const router = Router();
 
 router.post('/criarClientes', criarCliente);
 router.get('/listarClientes', listarClientes);
-router.get('/porNome:nome', listarClientesPorNome)
+router.get('/porNome/:nome', listarClientesPorNome)
 
 export default router;
