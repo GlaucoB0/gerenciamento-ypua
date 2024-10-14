@@ -9,12 +9,12 @@ const PORT = process.env.PORT;
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
+app.use('/', router)
+
 app.get("*", (req: Request, res: Response) => {
     res.status(404)
     res.json({message: "Rota não encontrada"})
 })
-
-app.use('/', router)
 
 app.listen(PORT, () => {
     console.log(`Server Open in Port => ${PORT}`);
