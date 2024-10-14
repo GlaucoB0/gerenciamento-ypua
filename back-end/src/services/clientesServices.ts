@@ -15,3 +15,7 @@ export const birthValidation = async (date: string) => {
     }
     return true
 }
+
+export const getAllClient = async () => {
+    return prisma.cliente.findMany();
+}
