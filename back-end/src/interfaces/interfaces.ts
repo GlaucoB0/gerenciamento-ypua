@@ -12,3 +12,15 @@ export interface Clientes {
     telefone: String;
     cpf: String;
 }
+
+export interface Quarto {
+    identificacao: string;
+    nome: string;
+    descricao: string;
+    camas_solteiros: number;
+    cama_casais: number;
+    qtda_banheiros: number;
+    preco: number;
+    disponivel: boolean;
+    image?: string | undefined;
+}
