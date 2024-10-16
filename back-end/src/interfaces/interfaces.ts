@@ -24,3 +24,10 @@ export interface Quarto {
     disponivel: boolean;
     image?: string | undefined;
 }
+
+export interface Funcionario{
+    nome: string;
+    funcao: string;
+    cpf: string;
+    senha: string;
+}
