@@ -59,7 +59,8 @@ model Quarto {
   qtda_banheiros Int
   preco Decimal @db.Decimal(5,2)
   disponivel Boolean
-  image String
+  image String?
+  amenidades Json
 
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
@@ -78,7 +79,7 @@ model Reserva {
   funcionario Funcionario @relation(fields: [funcionario_id], references: [funcionario_id])
   funcionario_id String
 
-  data_reserva DateTime  @db.Date
+  data_reserva DateTime @db.Date @default(now())
   check_in DateTime @db.Date
   check_out DateTime @db.Date
   entered Boolean? @default(false)
