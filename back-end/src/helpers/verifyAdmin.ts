@@ -7,7 +7,7 @@ const verifyAdmin = async (req:Request, res:Response, next:NextFunction) => {
     try {
     const token = getToken(req);
     const user:any = await getUserByToken(token);
-    const user_id = user.dataValues.user_id 
+    const user_id = user.user_id 
     const papelCheck:any = await findById(user_id);
     
     if(papelCheck.funcao !== 'admin'){
@@ -16,6 +16,7 @@ const verifyAdmin = async (req:Request, res:Response, next:NextFunction) => {
 next()
     } catch (error) {
         res.status(500).json({message: "Erro ao validar papel"})
+        console.log(error);
     }
     
 }
