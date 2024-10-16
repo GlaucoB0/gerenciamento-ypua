@@ -4,7 +4,7 @@ import verifyAdmin from "../helpers/verifyAdmin";
 
 const router = Router();
 
-router.post('/criarClientes', verifyAdmin, criarCliente);
+router.post('/criarClientes', criarCliente);
 router.get('/listarClientes', listarClientes);
 router.get('/porNome/:nome', listarClientesPorNome)
 
