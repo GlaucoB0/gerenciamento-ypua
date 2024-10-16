@@ -80,7 +80,7 @@ model Reserva {
   funcionario Funcionario @relation(fields: [funcionario_id], references: [funcionario_id])
   funcionario_id String
 
-  data_reserva DateTime @db.Date @default(now())
+  data_reserva DateTime @db.Date
   check_in DateTime @db.Date
   check_out DateTime @db.Date
   entered Boolean? @default(false)
