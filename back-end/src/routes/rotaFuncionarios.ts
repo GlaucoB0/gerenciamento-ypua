@@ -3,6 +3,6 @@ import { criarFuncionario } from "../controllers/controllerFuncionarios";
 
 const router = Router();
 
-router.post('/criarClientes', criarFuncionario);
+router.post('/criarFuncionarios', criarFuncionario);
 
 export default router;
