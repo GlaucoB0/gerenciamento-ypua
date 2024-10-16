@@ -59,3 +59,8 @@ export const createEmployeSchema = z.object({
     funcao: z.enum(["admin", "funcionario"]),
     senha: z.string().max(100, {message: "A senha deve conter no máximo 100 caracteres"}).min(8, {message: "A senha conter pelo menos 8 caracteres"}).regex(passwordRegex, {message: "A senha deve conter ao menos 1 letra maiuscula, 1 letra minuscula, 1 número e 1 Caracter Especial"})
 })
+
+export const loginSchema = z.object({
+    cpf: z.string(),
+    senha: z.string()
+})
