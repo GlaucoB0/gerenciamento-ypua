@@ -32,7 +32,7 @@ model Cliente {
   nome String @db.VarChar(255)
   email String @db.VarChar(255)
   cep String
-  data_nascimento DateTime @db.Date
+  data_nascimento String
   numero Int
   endereco String @db.VarChar(300)
   bairro String @db.Char(50)
@@ -76,8 +76,9 @@ model Reserva {
   funcionario Funcionario @relation(fields: [funcionario_id], references: [funcionario_id])
   funcionario_id String
 
-  check_in DateTime
-  check_out DateTime
+  data_reserva DateTime  @db.Date
+  check_in DateTime @db.Date
+  check_out DateTime @db.Date
   entered Boolean? @default(false)
 
   created_at DateTime @default(now())
