@@ -5,6 +5,7 @@ const stateRegex = /[A-ZA-Z]/
 const regexTel = /^\((?:[14689][1-9]|2[12478]|3[1234578]|5[1345]|7[134579])\) (?:[2-8]|9[0-9])[0-9]{3}\-[0-9]{4}$/
 const regexCPF = /^\d{3}\.\d{3}\.\d{3}-\d{2}$/
 const regexIdQuarto = /[A-Z]{1}/
+const passwordRegex = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,}$/
 
 export const createClientSchema = z.object({
     nome: z.string({message: "O Nome deve ser uma string!"}).min(3, {message: "O Nome deve conter ao menos 3 caracteres!"}).max(255, {message: "O Nome não deve ultrapassar 255 caracteres"}),
@@ -56,5 +57,5 @@ export const createEmployeSchema = z.object({
     nome: z.string({message: "O Nome deve ser uma string!"}).min(3, {message: "O Nome deve conter ao menos 3 caracteres!"}).max(255, {message: "O Nome não deve ultrapassar 255 caracteres"}),
     cpf: z.string({message: "O CPF deve ser uma string"}).regex(regexCPF, {message: "Deve seguir este modelo: XXX.XXX.XXX-XX onde X é um número!"}),
     funcao: z.enum(["admin", "funcionario"]),
-    senha: z.string()
+    senha: z.string().regex(passwordRegex)
 })
