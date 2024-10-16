@@ -1,5 +1,6 @@
 import { Router } from "express";
 import { criarCliente, listarClientes, listarClientesPorNome } from "../controllers/controllerClientes";
+import verifyAdmin from "../helpers/verifyAdmin";
 
 const router = Router();
 
