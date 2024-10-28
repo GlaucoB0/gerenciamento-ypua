@@ -25,7 +25,8 @@ export const criarQuartos =async (req: Request, res: Response) => {
 
 export const listarQuartos =async (req: Request, res: Response) => {
     try {
-        const rooms = await listRooms();
+        const status = req.query.status;
+        const rooms = await listRooms(status);
         res.status(200).json(rooms)
     } catch (error) {
         console.error(error)
