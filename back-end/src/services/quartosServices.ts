@@ -7,5 +7,10 @@ export const createRoomService = async (quarto: object) => {
 }
 
 export const listRooms = async () => {
-    return prisma.quarto.findMany();
+    return prisma.quarto.findMany({select: {
+        nome: true,
+        descricao: true,
+        amenidades: true,
+        image: true
+    }});
 }
