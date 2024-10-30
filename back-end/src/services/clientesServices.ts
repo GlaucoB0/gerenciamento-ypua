@@ -3,8 +3,8 @@ import dayjs from "dayjs";
 
 const prisma = new PrismaClient();
 
-export const createClientService = async (product: object) => {
-    return prisma.cliente.create({data: product});
+export const createClientService = async (reserva: object) => {
+    return prisma.reserva.create({data: reserva});
 }
 
 export const birthValidation = async (date: string) => {
