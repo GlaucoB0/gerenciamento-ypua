@@ -54,7 +54,7 @@ model Reserva {
   nome String @db.VarChar(255)
   email String @db.VarChar(255)
   cep String
-  data_nascimento String
+  data_nascimento DateTime @db.Date
   numero Int
   endereco String @db.VarChar(300)
   bairro String @db.Char(50)

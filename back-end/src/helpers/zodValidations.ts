@@ -22,9 +22,9 @@ export const createClientSchema = z.object({
     cpf: z.string({message: "O CPF deve ser uma string"}).regex(regexCPF, {message: "Deve seguir este modelo: XXX.XXX.XXX-XX onde X é um número!"}),
     quarto_id: z.string().uuid({message: "Deve ser um UUID!"}),
     funcionario_id: z.string().uuid({message: "Deve ser um UUID!"}),
-    data_reserva: z.date({message: "Deve ser uma data no modelo: YYYY-MM-DD"}),
-    check_in: z.date({message: "Deve ser uma data no modelo: YYYY-MM-DD"}),
-    check_out: z.date({message: "Deve ser uma data no modelo: YYYY-MM-DD"})
+    data_reserva: z.string({message: "Deve ser uma data no modelo: YYYY-MM-DD"}).date(),
+    check_in: z.string({message: "Deve ser uma data no modelo: YYYY-MM-DD"}).date(),
+    check_out: z.string({message: "Deve ser uma data no modelo: YYYY-MM-DD"}).date()
 })
 
 export const createRoomSchema = z.object({
