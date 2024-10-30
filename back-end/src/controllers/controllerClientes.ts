@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { createClientSchema } from "../helpers/zodValidations";
-import {Clientes} from '../interfaces/interfaces';
+import {Reservas} from '../interfaces/interfaces';
 import {createClientService, birthValidation, getAllClient, getClietsName} from '../services/clientesServices'
 import formatZodError from '../helpers/formatZodError';
 
@@ -14,7 +14,7 @@ export const criarCliente = async (req: Request, res: Response) => {
 
         birthValidation(bodyValidation.data.data_nascimento);
         
-        const client:Clientes = bodyValidation.data;
+        const client:Reservas = bodyValidation.data;
         const clienteCriado = await createClientService(client);
         if(!clienteCriado){
             return res.status(400).json({message: "Não foi possivel criar o Cliente!"});
