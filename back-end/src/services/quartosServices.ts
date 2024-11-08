@@ -43,3 +43,17 @@ export const listRooms = async (status: String) => {
 export const countAvaliableRooms = () => {
     return prisma.quarto.count({where: {disponivel: true}})
 }
+
+export const listRoom = async (id:string) => {
+    let quarto = await prisma.quarto.findFirst({where: {quarto_id: id}, select: {
+        nome: true,
+        cama_casais: true,
+        camas_solteiros: true,
+        amenidades: true,
+        image: true,
+        preco: true
+    }})
+
+    quarto.acomoda = (quarto.cama_casais*2 + quarto.camas_solteiros)
+    return quarto
+}
