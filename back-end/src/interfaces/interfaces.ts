@@ -36,3 +36,7 @@ export interface Funcionario{
     cpf: string;
     senha: string;
 }
+
+export interface Tarefa{
+    nome: String;
+}
