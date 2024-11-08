@@ -7,5 +7,9 @@ export const createTask = (data: Object) => {
 }
 
 export const listTasks = () => {
-    return prisma.tarefas.findMany({select: {nome:true}});
+    return prisma.tarefas.findMany();
+}
+
+export const deleteTask = async (id: number) => {
+    return prisma.tarefas.delete({where: {tarefa_id: id}});
 }
