@@ -49,6 +49,10 @@ export const createRoomSchema = z.object({
     })
 })
 
+export const createTaskSchema = z.object({
+    nome: z.string({message: "O Nome deve ser uma string!"}).min(3, {message: "O Nome deve conter ao menos 3 caracteres!"}).max(255, {message: "O Nome não deve ultrapassar 255 caracteres"})
+})
+
 export const createEmployeSchema = z.object({
     nome: z.string({message: "O Nome deve ser uma string!"}).min(3, {message: "O Nome deve conter ao menos 3 caracteres!"}).max(255, {message: "O Nome não deve ultrapassar 255 caracteres"}),
     cpf: z.string({message: "O CPF deve ser uma string"}).regex(regexCPF, {message: "Deve seguir este modelo: XXX.XXX.XXX-XX onde X é um número!"}),
