@@ -39,3 +39,7 @@ export const listRooms = async (status: String) => {
         disponivel: true
     }});
 }
+
+export const countAvaliableRooms = () => {
+    return prisma.quarto.count({where: {disponivel: true}})
+}

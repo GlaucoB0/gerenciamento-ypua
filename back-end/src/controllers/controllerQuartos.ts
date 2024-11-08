@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { createRoomSchema } from "../helpers/zodValidations";
-import { createRoomService, listRooms } from "../services/quartosServices";
+import { countAvaliableRooms, createRoomService, listRooms } from "../services/quartosServices";
 import { Quarto } from "../interfaces/interfaces"
 import formatZodError from '../helpers/formatZodError';
 
@@ -24,10 +24,17 @@ export const criarQuartos =async (req: Request, res: Response) => {
 }
 
 export const listarQuartos =async (req: Request, res: Response) => {
+    const query = req.params.query;
     try {
-        const status = req.query.status;
-        const rooms = await listRooms(status);
-        res.status(200).json(rooms)
+        if(query == 'count'){
+            let count = await countAvaliableRooms();
+            return res.status(200).json(count);
+        }
+        if(query == 'list'){
+            const status = req.query.status;
+            const rooms = await listRooms(status);
+            res.status(200).json(rooms)
+        }
     } catch (error) {
         console.error(error)
         res.status(500).json({error: error})
