@@ -11,7 +11,7 @@ app.use(express.urlencoded({extended: true}));
 
 app.use('/', router)
 
-app.get("*", (req: Request, res: Response) => {
+app.use("*", (req: Request, res: Response) => {
     res.status(404)
     res.json({message: "Rota não encontrada"})
 })
