@@ -1,4 +1,4 @@
-export interface Clientes {
+export interface Reservas {
     nome: String;
     email: String;
     cep: String;
@@ -11,6 +11,11 @@ export interface Clientes {
     pais: String;
     telefone: String;
     cpf: String;
+    data_reserva: Date;
+    check_in: Date;
+    check_out: Date;
+    quarto_id: String;
+    funcionario_id: String;
 }
 
 export interface Quarto {

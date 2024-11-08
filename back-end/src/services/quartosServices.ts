@@ -10,6 +10,7 @@ export const listRooms = async (status: String) => {
     if(status){
         if(status == 'disponivel'){
             return prisma.quarto.findMany({select: {
+                quarto_id: true,
                 nome: true,
                 descricao: true,
                 amenidades: true,

@@ -27,28 +27,6 @@ model Funcionario {
   reservas Reserva[]
 }
 
-model Cliente {
-  cliente_id String @id @default(uuid())
-
-  nome String @db.VarChar(255)
-  email String @db.VarChar(255)
-  cep String
-  data_nascimento String
-  numero Int
-  endereco String @db.VarChar(300)
-  bairro String @db.Char(50)
-  cidade String @db.Char(60)
-  estado String @db.Char(2)
-  pais String @db.Char(2)
-  telefone String @db.VarChar(16)
-  cpf String @db.VarChar(14)
-
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
-
-  reservas Reserva[]
-}
-
 model Quarto {
   quarto_id String @id @default(uuid())
 
@@ -72,9 +50,20 @@ model Quarto {
 model Reserva {
   reserva_id String @id @default(uuid())
 
-  //relations
-  cliente Cliente @relation(fields: [cliente_id], references: [cliente_id])
-  cliente_id String
+  //dados clientes
+  nome String @db.VarChar(255)
+  email String @db.VarChar(255)
+  cep String
+  data_nascimento DateTime @db.Date
+  numero Int
+  endereco String @db.VarChar(300)
+  bairro String @db.Char(50)
+  cidade String @db.Char(60)
+  estado String @db.Char(2)
+  pais String @db.Char(2)
+  telefone String @db.VarChar(16)
+  cpf String @db.VarChar(14)
+
   quarto Quarto @relation(fields: [quarto_id], references: [quarto_id])
   quarto_id String
   funcionario Funcionario @relation(fields: [funcionario_id], references: [funcionario_id])
