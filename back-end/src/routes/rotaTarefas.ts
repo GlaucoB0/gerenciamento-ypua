@@ -1,9 +1,9 @@
 import { Router } from "express";
-import { criarTarefa, listarTarefa } from "../controllers/controllerTarefas";
+import { criarTarefa, listarTarefas } from "../controllers/controllerTarefas";
 
 const router = Router();
 
 router.post('/criarTarefa', criarTarefa);
-router.get('/listarTarefas', listarTarefa)
+router.get('/listarTarefas', listarTarefas)
 
 export default router;
