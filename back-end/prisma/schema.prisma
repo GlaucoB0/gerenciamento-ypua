@@ -78,6 +78,12 @@ model Reserva {
   updated_at DateTime @updatedAt
 }
 
+model Tarefas{
+  tarefa_id Int @id @default(autoincrement())
+
+  nome String
+}
+
 enum funcao{
   admin
   funcionario
