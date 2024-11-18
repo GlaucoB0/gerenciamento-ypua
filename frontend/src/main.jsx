@@ -9,7 +9,7 @@ import {
 import './index.scss'
 
 // Componentes:
-import App from './App'
+import App from 'src/App'
 
 const router = createBrowserRouter([
   {
