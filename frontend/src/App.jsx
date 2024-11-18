@@ -1,9 +1,17 @@
 import React from 'react'
+import AppView from 'views/AppView/AppView';
+import LoginView from 'views/LoginView/LoginView';
 
 const App = () => {
+  const isLogged = React.useRef(false)
+
   return (
     <>
-      <h1>Olá mundo!</h1>
+      { isLogged === true ? (
+        <AppView />
+      ) : (
+        <LoginView />
+      )}
     </>
   )
 }
