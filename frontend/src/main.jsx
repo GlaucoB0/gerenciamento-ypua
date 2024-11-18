@@ -10,12 +10,22 @@ import './index.scss'
 
 // Componentes:
 import App from 'src/App'
+import AppView from 'views/AppView/AppView'
+import LoginView from 'views/LoginView/LoginView'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
   },
+  {
+    path: "/login",
+    element: <LoginView />,
+  },
+  {
+    path: "/app",
+    element: <AppView />
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(

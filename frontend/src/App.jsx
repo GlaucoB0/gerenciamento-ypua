@@ -1,17 +1,12 @@
-import React from 'react'
-import AppView from 'views/AppView/AppView';
-import LoginView from 'views/LoginView/LoginView';
+import { useState } from 'react'
+import { Navigate } from 'react-router-dom';
 
 const App = () => {
-  const isLogged = React.useRef(false)
+  const [isLogged, setLoginState] = useState(false)
 
   return (
     <>
-      { isLogged === true ? (
-        <AppView />
-      ) : (
-        <LoginView />
-      )}
+      { isLogged === true ? <Navigate to="/app" /> : <Navigate to="/login" /> }
     </>
   )
 }
