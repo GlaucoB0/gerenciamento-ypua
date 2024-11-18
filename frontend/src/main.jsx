@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 
 // Folhas de Estilo:
-import './index.scss'
+import './Styles/main.scss'
 
 // Componentes:
 import App from 'src/App'
