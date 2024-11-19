@@ -1,5 +1,3 @@
-$font-project: 'Segoe UI';
-
 $colors-white: #FFFFFF;
 $colors-gray: #888888;
 $colors-light-gray: #D9D9D9;
@@ -19,6 +17,33 @@ $text-size-title: 24px;
 $text-size-large: 20px;
 $text-size-normal: 16px;
 $text-size-small: 14px;
+
+@font-face {
+  font-family: 'Roboto Light';
+  src: url('assets/fonts/Roboto/Roboto-Light.ttf');
+}
+@font-face {
+  font-family: 'Roboto';
+  src: url('assets/fonts/Roboto/Roboto-Regular.ttf');
+}
+@font-face {
+  font-family: 'Roboto Medium';
+  src: url('assets/fonts/Roboto/Roboto-Medium.ttf');
+}
+@font-face {
+  font-family: 'Roboto Bold';
+  src: url('assets/fonts/Roboto/Roboto-Bold.ttf');
+}
+@font-face {
+  font-family: 'Roboto Black';
+  src: url('assets/fonts/Roboto/Roboto-Black.ttf');
+}
+
+$font-stack-light: 'Roboto Light', sans-serif;
+$font-stack-regular: 'Roboto', sans-serif;
+$font-stack-medium: 'Roboto Medium', sans-serif;
+$font-stack-bold: 'Roboto Bold', sans-serif;
+$font-stack-black: 'Roboto Black', sans-serif;
 
 $border-radius-big: 10px;
 $border-radius-small: 5px;
