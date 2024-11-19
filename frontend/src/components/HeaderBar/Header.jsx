@@ -1,7 +1,7 @@
-import $ from './HeaderBar.module.scss'
+import $ from './Header.module.scss'
 import img_logo from 'assets/images/logo-quinta-do-ypua.png'
 
-const HeaderBar = ({ title }) => {
+const Header = ({ title }) => {
   return (
     <header className={$.header}>
       <img
@@ -15,4 +15,4 @@ const HeaderBar = ({ title }) => {
   )
 }
 
-export default HeaderBar;
+export default Header;

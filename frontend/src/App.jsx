@@ -1,10 +1,10 @@
 import { Outlet } from 'react-router-dom';
-import HeaderBar from './components/HeaderBar/HeaderBar';
+import Header from './components/HeaderBar/Header';
 
 const App = () => {
   return (
     <>
-      <HeaderBar title="Gerenciamento" />
+      <Header title="Gerenciamento" />
       <Outlet />
     </>
   )
