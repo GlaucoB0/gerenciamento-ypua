@@ -1,0 +1,16 @@
+%card {
+  display: flex;
+  padding: 1.5rem;
+  width: max-content;
+  background-color: white;
+}
+
+.card_horizontal {
+  @extend %card;
+  flex-direction: row;
+}
+
+.card_vertical {
+  @extend %card;
+  flex-direction: column;
+}
