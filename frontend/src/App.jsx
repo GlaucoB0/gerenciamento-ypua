@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import { redirect, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import HeaderBar from './components/HeaderBar/HeaderBar';
 
 const App = () => {
   return (
     <>
-      <h1>Olaaaa</h1>
+      <HeaderBar title="Gerenciamento" />
       <Outlet />
     </>
   )
