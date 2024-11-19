@@ -1,6 +1,10 @@
 @import './variables';
 
-*{
+* {
     font-family: $font-project;
     font-size: $text-size-normal;
+}
+
+body {
+    background-color: $colors-background;
 }
