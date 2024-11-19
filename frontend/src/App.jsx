@@ -1,9 +1,12 @@
-import React from 'react'
+import { useState } from 'react'
+import { Navigate } from 'react-router-dom';
 
 const App = () => {
+  const [isLogged, setLoginState] = useState(false)
+
   return (
     <>
-      <h1>Olá mundo!</h1>
+      { isLogged === true ? <Navigate to="/app" /> : <Navigate to="/login" /> }
     </>
   )
 }
