@@ -1,15 +1,15 @@
 import $ from './LoginView.module.scss'
 import Card from 'src/components/Card/Card'
+import TitleArea from 'src/components/TitleArea/TitleArea'
 import Form from 'src/components/Form'
 
 const LoginView = () => {
   return (
     <main className={$.main}>
       <Card padding={2.5}>
-        <hgroup className={$.hgroup}>
-          <h1>Bem-vindo de volta!</h1>
+        <TitleArea title="Bem-vindo de volta!" >
           <p>Insira suas informações de usuário e senha para acessar o sistema</p>
-        </hgroup>
+        </TitleArea>
         <Form.Root method="post" action="">
           <Form.Input 
             type="text" name="usuario" label="Usuário" 
