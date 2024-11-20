@@ -3,7 +3,7 @@ import $ from './FormInput.module.scss'
 const FormInput = ({type, name, label, placeholder, iconSrc}) => {
   return (
     <div className={$.label_wrapper}>
-      { label && (
+      {label && (
         <label htmlFor={name}>
           {label}
         </label>
