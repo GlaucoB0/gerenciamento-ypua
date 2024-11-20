@@ -1,6 +1,9 @@
 @use './variables' as vs;
 
 * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
     font-family: vs.$font-stack-regular;
     font-size: vs.$text-size-normal;
 }
