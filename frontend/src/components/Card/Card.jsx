@@ -11,13 +11,11 @@ function getCardClass(orientation) {
   }
 }
 
-const Card = ({ orientation = 'horizontal', radiusPx = 5, children }) => {
+const Card = ({ orientation = 'vertical', padding, children }) => {
   const style = getCardClass(orientation)
 
   return (
-    <section className={style} style={{
-      borderRadius: `${radiusPx}px`
-    }}>
+    <section className={style} style={{ padding: `${padding}rem` }}>
       {children}
     </section>
   )
