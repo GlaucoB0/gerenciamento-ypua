@@ -3,7 +3,6 @@ $colors-gray: #888888;
 $colors-light-gray: #D9D9D9;
 $colors-dark-gray: #656565;
 $colors-black: #000000;
-$colors-black-005: #0000000d;
 $colors-soft-black: #353535;
 $colors-red: #7E2726;
 $colors-yellow: #D2AE6C;
@@ -19,6 +18,11 @@ $text-size-title: 24px;
 $text-size-large: 20px;
 $text-size-normal: 16px;
 $text-size-small: 14px;
+
+$shadow-black-005: 0px 4px 12px #0000000d;
+
+$border-radius-big: 10px;
+$border-radius-small: 5px;
 
 @font-face {
   font-family: 'Roboto Light';
@@ -46,6 +50,3 @@ $font-stack-regular: 'Roboto', sans-serif;
 $font-stack-medium: 'Roboto Medium', sans-serif;
 $font-stack-bold: 'Roboto Bold', sans-serif;
 $font-stack-black: 'Roboto Black', sans-serif;
-
-$border-radius-big: 10px;
-$border-radius-small: 5px;
