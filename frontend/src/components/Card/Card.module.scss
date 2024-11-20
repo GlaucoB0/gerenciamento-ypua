@@ -1,7 +1,11 @@
+@use 'styles/variables' as vs;
+
 %card {
   display: flex;
   width: max-content;
+  
   background-color: white;
+  box-shadow: vs.$shadow-black-005;
   border-radius: 10px;
 }
 
