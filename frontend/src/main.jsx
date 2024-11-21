@@ -20,6 +20,12 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginView />,
+        action: async ({ request, params }) => {
+          /** Aqui, o seguinte fluxo ocorrerá:
+           * - Validação dos dados enviados pelo Form
+           * - Envio dos dados para a API
+           * - Retorno com base nas respostas */
+        }
       },
       {
         path: "/app",
