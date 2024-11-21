@@ -1,9 +1,13 @@
-import React from 'react'
+import $ from './FormSubmit.module.sass'
 
-const FormSubmit = () => {
+const FormSubmit = ({value, isEnabled}) => {
   return (
-    <div>FormSubmit</div>
+    <input
+      className={$.input}
+      type="submit" 
+      value={value}
+      disabled={!isEnabled} />
   )
 }
 
-export default FormSubmit
+export default FormSubmit;

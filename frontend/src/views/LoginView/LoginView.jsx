@@ -20,6 +20,7 @@ const LoginView = () => {
             type="password" name="senha" label="Senha" 
             placeholder="Insira a sua senha"
             iconSrc="src/assets/images/icon-eye.png" />
+          <Form.Submit value="Entrar" isEnabled={true} />
         </Form.Root>
       </Card>
     </main>
