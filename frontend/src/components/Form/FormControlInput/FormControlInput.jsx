@@ -1,7 +1,9 @@
 import $ from './FormControlInput.module.sass'
+import FormControlContext from 'hooks/contexts/FormControlContext';
+import { useContext } from 'react';
 
 const FormControlInput = ({type, placeholder, iconSrc}) => {
-  let name;
+  let {name} = useContext(FormControlContext)
 
   return (
     <input 
