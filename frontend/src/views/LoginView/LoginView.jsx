@@ -10,16 +10,21 @@ const LoginView = () => {
         <TitleArea title="Bem-vindo de volta!" >
           <p>Insira suas informações de usuário e senha para acessar o sistema</p>
         </TitleArea>
-        <Form.Root method="post" action="">
-          <Form.Input 
-            type="text" name="usuario" label="Usuário" 
-            placeholder="Insira o seu nome de usuário"
-            iconSrc="src/assets/images/icon-user.png" >
-          </Form.Input>
-          <Form.Input 
-            type="password" name="senha" label="Senha" 
-            placeholder="Insira a sua senha"
-            iconSrc="src/assets/images/icon-eye.png" />
+        <Form.Root method="get" action="/app">
+          <Form.Control.Root name="usuario" label="Usuário" >
+            <Form.Control.Label />
+            <Form.Control.Input 
+              type="text"
+              placeholder="Insira o seu nome de usuário"
+              iconSrc="src/assets/images/icon-user.png" />
+          </Form.Control.Root>
+          <Form.Control.Root name="senha" label="Senha" >
+            <Form.Control.Label />
+            <Form.Control.Input 
+              type="password"
+              placeholder="Insira a sua senha"
+              iconSrc="src/assets/images/icon-eye.png" />
+          </Form.Control.Root>
           <Form.Submit value="Entrar" isEnabled={true} />
         </Form.Root>
       </Card>
