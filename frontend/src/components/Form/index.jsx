@@ -1,11 +1,17 @@
 import FormRoot from './FormRoot/FormRoot'
-import FormInput from './FormInput/FormInput'
+import FormControlInput from './FormControlInput/FormControlInput'
+import FormControlLabel from './FormControlLabel/FormControlLabel'
+import FormControlRoot from './FormControlRoot/FormControlRoot'
 import FormCheckbox from './FormCheckbox/FormCheckbox'
 import FormSubmit from './FormSubmit/FormSubmit'
 
 const Form = {
   Root: FormRoot,
-  Input: FormInput,
+  Control: {
+    Root: FormControlRoot,
+    Input: FormControlInput,
+    Label: FormControlLabel
+  },
   Checkbox: FormCheckbox,
   Submit: FormSubmit
 }

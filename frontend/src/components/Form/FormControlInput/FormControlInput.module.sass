@@ -1,0 +1,21 @@
+@use 'styles/variables' as vs
+
+.input
+  padding: 0.75rem 3rem 0.75rem 1rem
+  width: 100%
+  
+  background-position: 340px 50% 
+  background-repeat: no-repeat
+  
+  border: 2px solid vs.$colors-gray
+  border-radius: 10px
+  transition: 0.2s
+
+  &:focus
+    outline: none
+    border: 2px solid vs.$colors-dark-gray
+
+  &::placeholder
+    font-family: vs.$font-stack-light
+    font-weight: 300
+    color: vs.$colors-light-gray
