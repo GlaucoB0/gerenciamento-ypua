@@ -10,7 +10,7 @@ import './Styles/main.scss'
 import App from 'src/App'
 import AppView from 'views/AppView/AppView'
 import LoginView from 'views/LoginView/LoginView'
-import { appViewLoader } from 'src/hooks/viewLoaders'
+import { appViewLoader } from 'hooks/routes/viewLoaders'
 
 const router = createBrowserRouter([
   {
