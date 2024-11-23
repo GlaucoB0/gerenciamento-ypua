@@ -1,19 +1,31 @@
 import $ from './FormControlInput.module.sass'
+import { useContext, useState } from 'react'
 import FormControlContext from 'hooks/contexts/FormControlContext';
-import { useContext } from 'react';
 
-const FormControlInput = ({type, placeholder, iconSrc}) => {
-  let {name} = useContext(FormControlContext)
+const FormControlInput = ({type: givenType, placeholder, iconSrc}) => {
+  const {name, label} = useContext(FormControlContext)
+  const [currentType, setCurrentType] = useState(givenType)
+
+  const handleImgClick = () => {
+    if (givenType === 'password') {
+      setCurrentType(currentType === 'password' ? 'input' : 'password')
+    }
+  }
 
   return (
-    <input 
-      className={$.input}
-      type={type} 
-      name={name} 
-      placeholder={placeholder}
-      style={{
-        backgroundImage: `url(${iconSrc})`
-      }} />
+    <div className={$.input_wrapper}>
+      <img 
+        className={$.icon}
+        src={iconSrc}
+        alt={label || 'Campo de entrada'}
+        draggable={false}
+        onClick={handleImgClick} />
+      <input 
+        className={$.input}
+        type={currentType} 
+        name={name} 
+        placeholder={placeholder} />
+    </div>
   )
 }
 
