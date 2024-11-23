@@ -1,12 +1,13 @@
 import $ from './FormSubmit.module.sass'
 
-const FormSubmit = ({value, isEnabled}) => {
+const FormSubmit = ({isEnabled, children}) => {
   return (
-    <input
+    <button
       className={$.input}
       type="submit" 
-      value={value}
-      disabled={!isEnabled} />
+      disabled={!isEnabled}>
+      {children}
+    </button>
   )
 }
 

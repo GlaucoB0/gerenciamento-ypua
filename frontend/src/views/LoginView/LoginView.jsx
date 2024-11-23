@@ -25,7 +25,9 @@ const LoginView = () => {
               placeholder="Insira a sua senha"
               iconSrc="src/assets/images/icon-eye.png" />
           </Form.Control.Root>
-          <Form.Submit value="Entrar" isEnabled={true} />
+          <Form.Submit isEnabled={true}>
+            Entrar
+          </Form.Submit>
         </Form.Root>
       </Card>
     </main>
