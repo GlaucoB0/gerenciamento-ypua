@@ -4,7 +4,7 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 // Hooks:
-import loginRequest from 'hooks/actions/loginRequest'
+import loginViewAction from 'src/hooks/actions/loginViewAction'
 import loginViewLoader from './hooks/loaders/loginViewLoader'
 import appViewLoader from 'hooks/loaders/appViewLoader'
 
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
         path: "/login",
         element: <LoginView />,
         loader: loginViewLoader,
-        action: loginRequest
+        action: loginViewAction
       },
       {
         path: "/app",
