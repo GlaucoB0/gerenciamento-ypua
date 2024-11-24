@@ -1,7 +1,7 @@
 import axios from 'axios'
 import { redirect } from 'react-router-dom'
 
-async function loginRequest({ request }) {
+async function loginViewAction({ request }) {
   const baseUrl = import.meta.env.VITE_API_BASE_URL
   const formData = await request.formData()
 
@@ -25,4 +25,4 @@ async function loginRequest({ request }) {
   }
 }
 
-export default loginRequest;
+export default loginViewAction;
