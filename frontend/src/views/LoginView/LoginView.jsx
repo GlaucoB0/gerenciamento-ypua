@@ -15,7 +15,7 @@ const LoginView = () => {
             <Form.Control.Label />
             <Form.Control.Input 
               type="text"
-              placeholder="Insira o seu nome de usuário"
+              placeholder="Insira o seu CPF"
               iconSrc="src/assets/images/icon-user.png" />
           </Form.Control.Root>
           <Form.Control.Root name="senha" label="Senha" >
