@@ -19,16 +19,12 @@ export const createClientSchema = z.object({
     estado: z.string({message: "O Estado deve ser uma string"}).max(2, {message: "Deve conter no máximo 2 caracteres"}).regex(stateRegex, {message: "Deve seguir o modelo: XX onde X é uma letra"}),
     pais: z.string({message: "O Pais deve ser uma string"}).max(2, {message: "Deve conter no máximo 2 caracteres"}).regex(stateRegex, {message: "Deve seguir o modelo: XX onde X é uma letra"}),
     telefone: z.string({message: "O telefone deve ser uma string"}).regex(regexTel, {message: "O Número deve seguir este modelo: (XX) 9XXXX-XXXX onde X é um número e deve ser um DDD válido"}),
-    cpf: z.string({message: "O CPF deve ser uma string"}).regex(regexCPF, {message: "Deve seguir este modelo: XXX.XXX.XXX-XX onde X é um número!"})
-})
-
-export const reservaValidation = z.object({
-    cliente_id: z.string().uuid({message: "Deve ser um UUID!"}),
+    cpf: z.string({message: "O CPF deve ser uma string"}).regex(regexCPF, {message: "Deve seguir este modelo: XXX.XXX.XXX-XX onde X é um número!"}),
     quarto_id: z.string().uuid({message: "Deve ser um UUID!"}),
     funcionario_id: z.string().uuid({message: "Deve ser um UUID!"}),
-    data_reserva: z.date({message: "Deve ser uma data no modelo: YYYY-MM-DD"}),
-    check_in: z.date({message: "Deve ser uma data no modelo: YYYY-MM-DD"}),
-    check_out: z.date({message: "Deve ser uma data no modelo: YYYY-MM-DD"})
+    data_reserva: z.string({message: "Deve ser uma data no modelo: YYYY-MM-DD"}).date(),
+    check_in: z.string({message: "Deve ser uma data no modelo: YYYY-MM-DD"}).date(),
+    check_out: z.string({message: "Deve ser uma data no modelo: YYYY-MM-DD"}).date()
 })
 
 export const createRoomSchema = z.object({
@@ -51,6 +47,10 @@ export const createRoomSchema = z.object({
         cozinha: z.boolean(),
         toalhas: z.boolean()
     })
+})
+
+export const createTaskSchema = z.object({
+    nome: z.string({message: "O Nome deve ser uma string!"}).min(3, {message: "O Nome deve conter ao menos 3 caracteres!"}).max(255, {message: "O Nome não deve ultrapassar 255 caracteres"})
 })
 
 export const createEmployeSchema = z.object({

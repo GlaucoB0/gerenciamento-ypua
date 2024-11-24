@@ -4,7 +4,7 @@ import verifyAdmin from '../helpers/verifyAdmin'
 
 const router = Router();
 
-router.post('/criarFuncionarios', verifyAdmin ,criarFuncionario);
+router.post('/criarFuncionarios' ,criarFuncionario);
 router.post('/login', login)
 
 export default router;
