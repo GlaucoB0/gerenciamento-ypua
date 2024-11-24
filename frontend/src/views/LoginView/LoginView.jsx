@@ -1,4 +1,4 @@
-import $ from './LoginView.module.scss'
+import $ from './LoginView.module.sass'
 import Card from 'src/components/Card/Card'
 import TitleArea from 'src/components/TitleArea/TitleArea'
 import Form from 'src/components/Form'

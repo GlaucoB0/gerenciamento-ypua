@@ -1,4 +1,4 @@
-import $ from './Header.module.scss'
+import $ from './Header.module.sass'
 import img_logo from 'assets/images/logo-quinta-do-ypua.png'
 
 const Header = ({ title }) => {

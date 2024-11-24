@@ -1,4 +1,4 @@
-import styles from './AppView.module.scss'
+import styles from './AppView.module.sass'
 import { Outlet } from 'react-router-dom'
 
 const AppView = () => {
