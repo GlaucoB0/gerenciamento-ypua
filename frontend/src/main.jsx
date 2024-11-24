@@ -4,7 +4,9 @@ import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 // Hooks:
-import { appViewLoader } from 'hooks/loaders/viewLoaders'
+import loginRequest from 'hooks/actions/loginRequest'
+import loginViewLoader from './hooks/loaders/loginViewLoader'
+import appViewLoader from 'hooks/loaders/appViewLoader'
 
 // Visualizações & estilos:
 import 'styles/main.scss'
@@ -20,17 +22,13 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <LoginView />,
-        action: async ({ request, params }) => {
-          /** Aqui, o seguinte fluxo ocorrerá:
-           * - Validação dos dados enviados pelo Form
-           * - Envio dos dados para a API
-           * - Retorno com base nas respostas */
-        }
+        loader: loginViewLoader,
+        action: loginRequest
       },
       {
         path: "/app",
-        loader: appViewLoader,
         element: <AppView />,
+        loader: appViewLoader,
         children: [/* ⚠ NOTA: Inserir páginas aqui */]
       }
     ]
