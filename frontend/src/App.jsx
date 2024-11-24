@@ -1,9 +1,11 @@
-import React from 'react'
+import { useState } from 'react'
+import { redirect, Outlet } from 'react-router-dom';
 
 const App = () => {
   return (
     <>
-      <h1>Olá mundo!</h1>
+      <h1>Olaaaa</h1>
+      <Outlet />
     </>
   )
 }
