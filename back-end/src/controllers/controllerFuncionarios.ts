@@ -49,10 +49,11 @@ export const login = async (req: Request, res: Response) => {
         }
         
         const compararSenha = await bcrypt.compare(employeData.senha, user.senha);
-        await createUserToken(user, req, res);
         if(!compararSenha){
             return res.status(403).json({message: "A senha não condiz!"})
         }
+        
+        await createUserToken(user, req, res);
     } catch (error) {
         console.error(error)
         res.status(500).json({error: error})
