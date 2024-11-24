@@ -1,6 +1,13 @@
-@import './variables';
+@use './variables' as vs;
 
-*{
-    font-family: $font-project;
-    font-size: $text-size-normal;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: vs.$font-stack-regular;
+    font-size: vs.$text-size-normal;
+}
+
+body {
+    background-color: vs.$colors-background;
 }

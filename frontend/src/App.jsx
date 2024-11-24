@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import { redirect, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+import Header from './components/Header/Header';
 
 const App = () => {
   return (
     <>
-      <h1>Olaaaa</h1>
+      <Header title="Gerenciamento" />
       <Outlet />
     </>
   )
