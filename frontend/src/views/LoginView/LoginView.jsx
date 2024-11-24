@@ -10,7 +10,7 @@ const LoginView = () => {
         <TitleArea title="Bem-vindo de volta!" >
           <p>Insira suas informações de usuário e senha para acessar o sistema</p>
         </TitleArea>
-        <Form.Root method="get" action="/app">
+        <Form.Root method="post" action="/login">
           <Form.Control.Root name="usuario" label="Usuário" >
             <Form.Control.Label />
             <Form.Control.Input 
