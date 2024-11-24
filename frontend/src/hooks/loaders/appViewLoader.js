@@ -1,6 +1,6 @@
 import { redirect } from "react-router-dom"
 
-export const appViewLoader = () => {
+const appViewLoader = () => {
   /* ABAIXO, placeholder da lógica de detecção de login: */
   const isUserLogged = false // <= Isso será alterado, o resto mantido
 
@@ -10,3 +10,5 @@ export const appViewLoader = () => {
 
   return null;
 }
+
+export default appViewLoader
