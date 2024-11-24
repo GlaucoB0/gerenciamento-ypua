@@ -6,6 +6,8 @@ const FormControlInput = ({type: givenType, placeholder, iconSrc}) => {
   const {name, label} = useContext(FormControlContext)
   const [currentType, setCurrentType] = useState(givenType)
 
+  let imgVariableStyle = givenType === 'password' ? { cursor: 'pointer' } : {}
+
   const handleImgClick = () => {
     if (givenType === 'password') {
       setCurrentType(currentType === 'password' ? 'input' : 'password')
@@ -17,9 +19,10 @@ const FormControlInput = ({type: givenType, placeholder, iconSrc}) => {
       <img 
         className={$.icon}
         src={iconSrc}
-        alt={label || 'Campo de entrada'}
+        alt={`Ícone do campo ${label || 'de entrada'}`}
         draggable={false}
-        onClick={handleImgClick} />
+        onClick={handleImgClick}
+        style={imgVariableStyle} />
       <input 
         className={$.input}
         type={currentType} 
