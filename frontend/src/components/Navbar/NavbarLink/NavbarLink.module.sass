@@ -1,3 +1,4 @@
+@use 'sass:color'
 @use 'styles/variables' as vs
 
 .list_item
@@ -18,7 +19,7 @@
     text-decoration: none
 
   &:active
-    background-color: transparentize(vs.$colors-red, 0.75)
+    background-color: color.scale($color: vs.$colors-red, $alpha: -75%)
 
     img
       filter: none
