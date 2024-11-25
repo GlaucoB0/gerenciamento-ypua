@@ -1,8 +1,7 @@
 // Dependências:
 import axios from 'axios'
 import { redirect } from 'react-router-dom'
-
-const createCookie = (name, value) => document.cookie = `${name}=${value}`
+// import createCookie from 'hooks/cookies/createCookie'
 
 async function loginViewAction({ request }) {
   const baseUrl = import.meta.env.VITE_API_BASE_URL
@@ -18,7 +17,7 @@ async function loginViewAction({ request }) {
     console.log(response)
 
     const { token } = response.data
-    createCookie("user", token)
+    localStorage.setItem('user', token)
 
     return redirect('/dashboard')
   } catch (error) {
