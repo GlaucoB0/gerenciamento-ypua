@@ -13,7 +13,6 @@ async function loginViewAction({ request }) {
 
   try {
     const response = await axios.post(`${baseUrl}/funcionarios/login`, submission)
-    console.log(response)
 
     const { token } = response.data
     localStorage.setItem('user', `Bearer ${token}`)
