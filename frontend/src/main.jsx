@@ -3,14 +3,16 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-// Folhas de Estilo:
-import './Styles/main.scss'
+// Hooks:
+import loginViewAction from 'src/hooks/actions/loginViewAction'
+import loginViewLoader from './hooks/loaders/loginViewLoader'
+import dashboardLoader from 'src/hooks/loaders/dashboardLoader'
 
-// Componentes:
+// Visualizações & estilos:
+import 'styles/main.scss'
 import App from 'src/App'
-import AppView from 'views/AppView/AppView'
-import LoginView from 'views/LoginView/LoginView'
-import { appViewLoader } from 'hooks/routes/viewLoaders'
+import Login from 'src/views/Login/Login'
+import Dashboard from 'src/views/Dashboard/Dashboard'
 
 const router = createBrowserRouter([
   {
@@ -19,18 +21,14 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/login",
-        element: <LoginView />,
-        action: async ({ request, params }) => {
-          /** Aqui, o seguinte fluxo ocorrerá:
-           * - Validação dos dados enviados pelo Form
-           * - Envio dos dados para a API
-           * - Retorno com base nas respostas */
-        }
+        element: <Login />,
+        loader: loginViewLoader,
+        action: loginViewAction
       },
       {
-        path: "/app",
-        loader: appViewLoader,
-        element: <AppView />,
+        path: "/dashboard",
+        element: <Dashboard />,
+        loader: dashboardLoader,
         children: [/* ⚠ NOTA: Inserir páginas aqui */]
       }
     ]

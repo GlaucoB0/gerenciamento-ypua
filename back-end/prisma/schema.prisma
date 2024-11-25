@@ -9,6 +9,82 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
+  provider = "mysql"
   url      = env("DATABASE_URL")
+}
+
+model Funcionario {
+  funcionario_id String @id @default(uuid())
+
+  nome String @db.VarChar(255)
+  funcao funcao @default(funcionario)
+  cpf String @db.VarChar(14)
+  senha String @db.VarChar(200)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  reservas Reserva[]
+}
+
+model Quarto {
+  quarto_id String @id @default(uuid())
+
+  identificacao String @db.TinyText
+  nome String @db.Text
+  descricao String @db.Char(100)
+  camas_solteiros Int
+  cama_casais Int
+  qtda_banheiros Int
+  preco Decimal @db.Decimal(5,2)
+  disponivel Boolean
+  image String?
+  amenidades Json
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  
+  reservas Reserva[]
+}
+
+model Reserva {
+  reserva_id String @id @default(uuid())
+
+  //dados clientes
+  nome String @db.VarChar(255)
+  email String @db.VarChar(255)
+  cep String
+  data_nascimento DateTime @db.Date
+  numero Int
+  endereco String @db.VarChar(300)
+  bairro String @db.Char(50)
+  cidade String @db.Char(60)
+  estado String @db.Char(2)
+  pais String @db.Char(2)
+  telefone String @db.VarChar(16)
+  cpf String @db.VarChar(14)
+
+  quarto Quarto @relation(fields: [quarto_id], references: [quarto_id])
+  quarto_id String
+  funcionario Funcionario @relation(fields: [funcionario_id], references: [funcionario_id])
+  funcionario_id String
+
+  data_reserva DateTime @db.Date
+  check_in DateTime @db.Date
+  check_out DateTime @db.Date
+  entered Boolean? @default(false)
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+}
+
+model Tarefas{
+  tarefa_id Int @id @default(autoincrement())
+
+  nome String
+}
+
+enum funcao{
+  admin
+  funcionario
 }

@@ -1,4 +1,4 @@
-import $ from './Card.module.scss'
+import $ from './Card.module.sass'
 
 function getCardClass(orientation) {
   switch(orientation) {
