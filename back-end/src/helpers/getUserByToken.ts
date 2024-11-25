@@ -6,7 +6,7 @@ const getUserByToken = async (token: string | undefined, res: Response) => {
     const senha = process.env.SENHAJWT
     return new Promise(async (resolve, reject) => {
         if(!token){
-            return res.status(401),json({err: "Acesso Negado!"})
+            return res.status(401).json({err: "Acesso Negado!"})
         }
         
         const decode = jwt.decode(token, senha);
