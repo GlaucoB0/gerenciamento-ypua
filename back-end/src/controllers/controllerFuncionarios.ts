@@ -5,6 +5,7 @@ import {Funcionario} from '../interfaces/interfaces';
 import createUserToken from '../helpers/createToken';
 import {checkEmployeByCPF, createEmployeService} from '../services/employeServices'
 import formatZodError from '../helpers/formatZodError';
+import getUserByToken from "../helpers/getUserByToken";
 
 export const criarFuncionario = async (req: Request, res: Response) => {
     try {
@@ -54,6 +55,17 @@ export const login = async (req: Request, res: Response) => {
         }
         
         await createUserToken(user, req, res);
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({error: error})
+    }
+}
+
+export const listToken = async (req: Request, res: Response) => {
+    const token = req.headers.authorization?.split(' ')[1];
+    try {    
+        const user = await getUserByToken(token, res)
+        res.status(200).json(user);
     } catch (error) {
         console.error(error)
         res.status(500).json({error: error})
