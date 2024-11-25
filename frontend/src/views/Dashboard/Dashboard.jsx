@@ -1,0 +1,39 @@
+import $ from './Dashboard.module.sass'
+import { Outlet } from 'react-router-dom'
+import Card from 'src/components/Card/Card'
+import Navbar from 'src/components/Navbar'
+
+import icon_VisaoGeral from 'assets/images/icon-filled-eye.png'
+import icon_Reservas from 'assets/images/icon-tag.png'
+import icon_ListaUsuarios from 'assets/images/icon-user-list.png'
+import icon_Criar from 'assets/images/icon-create.png'
+import icon_Sair from 'assets/images/icon-exit.png'
+
+const AppView = () => {
+  return (
+    <>
+      <aside className={$.aside}>
+        <Card
+          orientation='vertical'
+          padding={3}>
+          <Navbar.Root>
+            <Navbar.Link imgSrc={icon_VisaoGeral} 
+              name="Visão Geral" to="#" />
+            <Navbar.Link imgSrc={icon_Reservas} 
+              name="Reserva" to="#" />
+            <Navbar.Link imgSrc={icon_ListaUsuarios} 
+              name="Lista de Hóspedes" to="#" />
+            <Navbar.Link imgSrc={icon_Criar} 
+              name="Criar Acomodação" to="#" />
+            <Navbar.Link imgSrc={icon_Criar} 
+              name="Criar Funcionário" to="#" />
+          </Navbar.Root>
+          <Navbar.Link imgSrc={icon_Sair} name="Sair" to="#" />
+        </Card>
+      </aside>
+      <Outlet />
+    </>
+  )
+}
+
+export default AppView
