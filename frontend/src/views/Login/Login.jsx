@@ -1,9 +1,9 @@
-import $ from './LoginView.module.sass'
+import $ from './Login.module.sass'
 import Card from 'src/components/Card/Card'
 import TitleArea from 'src/components/TitleArea/TitleArea'
 import Form from 'src/components/Form'
 
-const LoginView = () => {
+const Login = () => {
   return (
     <main className={$.main}>
       <Card padding={2.5}>
@@ -34,4 +34,4 @@ const LoginView = () => {
   )
 }
 
-export default LoginView
+export default Login

@@ -6,13 +6,13 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 // Hooks:
 import loginViewAction from 'src/hooks/actions/loginViewAction'
 import loginViewLoader from './hooks/loaders/loginViewLoader'
-import appViewLoader from 'hooks/loaders/appViewLoader'
+import dashboardLoader from 'src/hooks/loaders/dashboardLoader'
 
 // Visualizações & estilos:
 import 'styles/main.scss'
 import App from 'src/App'
-import AppView from 'views/AppView/AppView'
-import LoginView from 'views/LoginView/LoginView'
+import Login from 'src/views/Login/Login'
+import Dashboard from 'src/views/Dashboard/Dashboard'
 
 const router = createBrowserRouter([
   {
@@ -21,14 +21,14 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/login",
-        element: <LoginView />,
+        element: <Login />,
         loader: loginViewLoader,
         action: loginViewAction
       },
       {
-        path: "/app",
-        element: <AppView />,
-        loader: appViewLoader,
+        path: "/dashboard",
+        element: <Dashboard />,
+        loader: dashboardLoader,
         children: [/* ⚠ NOTA: Inserir páginas aqui */]
       }
     ]

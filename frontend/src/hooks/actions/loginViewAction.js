@@ -20,7 +20,7 @@ async function loginViewAction({ request }) {
     const { token } = response.data
     createCookie("user", token)
 
-    return redirect('/app')
+    return redirect('/dashboard')
   } catch (error) {
     console.log(error)
     return redirect('/login')
