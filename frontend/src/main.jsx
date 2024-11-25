@@ -29,7 +29,23 @@ const router = createBrowserRouter([
         path: "/dashboard",
         element: <Dashboard />,
         loader: dashboardLoader,
-        children: [/* ⚠ NOTA: Inserir páginas aqui */]
+        children: [
+          {
+            path: "/dashboard/geral",
+          },
+          {
+            path: "/dashboard/acomodacoes",
+          },
+          {
+            path: "/dashboard/hospedes",
+          },
+          {
+            path: "/dashboard/criarAcomodacao",
+          },
+          {
+            path: "/dashboard/criarFuncionario",
+          },
+        ]
       }
     ]
   }

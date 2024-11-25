@@ -1,27 +1,27 @@
 @use 'sass:color'
 @use 'styles/variables' as vs
 
-.list_item
-  display: flex
+.item
   list-style-type: none
+
+@mixin link($color: vs.$colors-black, $background-alpha: -100%)
+  display: flex
   align-items: center
 
   padding: .5rem .75rem
   gap: 1rem
 
   border-radius: 2rem
+  text-decoration: none
 
+  color: $color
+  background-color: color.scale($color, $alpha: $background-alpha)
+  transition: linear 0.25s
+
+.pending
+  @include link($color: vs.$colors-dark-gray)
   img
     filter: grayscale(1) brightness(1.75)
 
-  .link
-    color: vs.$colors-dark-gray
-    text-decoration: none
-
-  &:active
-    background-color: color.scale($color: vs.$colors-red, $alpha: -75%)
-
-    img
-      filter: none
-    .link
-      color: vs.$colors-red
+.active
+  @include link($color: vs.$colors-red, $background-alpha: -75%)

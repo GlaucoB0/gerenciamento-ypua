@@ -1,14 +1,15 @@
 import $ from './NavbarLink.module.sass'
-import { Link } from 'react-router-dom'
-import React from 'react'
+import { NavLink } from 'react-router-dom'
+
+const handleNavLink$ = ({ isActive }) => isActive ? $.active : $.pending
 
 const NavbarLink = ({ imgSrc, name, to }) => {
   return (
-    <li className={$.list_item}>
-      <img src={imgSrc} alt={name} />
-      <Link className={$.link} to={to}>
+    <li className={$.item}>
+      <NavLink className={handleNavLink$} to={to}>
+        <img src={imgSrc} alt={name} />
         {name}
-      </Link>
+      </NavLink>
     </li>
   )
 }

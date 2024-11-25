@@ -18,16 +18,17 @@ const AppView = () => {
           padding={3}>
           <Navbar.Root>
             <Navbar.Link imgSrc={icon_VisaoGeral} 
-              name="Visão Geral" to="#" />
+              name="Visão Geral" to="/dashboard/geral" />
             <Navbar.Link imgSrc={icon_Reservas} 
-              name="Reserva" to="#" />
+              name="Acomodações" to="/dashboard/acomodacoes" />
             <Navbar.Link imgSrc={icon_ListaUsuarios} 
-              name="Lista de Hóspedes" to="#" />
+              name="Lista de Hóspedes" to="/dashboard/hospedes" />
             <Navbar.Link imgSrc={icon_Criar} 
-              name="Criar Acomodação" to="#" />
+              name="Criar Acomodação" to="/dashboard/criarAcomodacao" />
             <Navbar.Link imgSrc={icon_Criar} 
-              name="Criar Funcionário" to="#" />
+              name="Criar Funcionário" to="/dashboard/criarFuncionario" />
           </Navbar.Root>
+          {/* ⚠ AVISO: O elemento abaixo será substituído por um modal de logout. */}
           <Navbar.Link imgSrc={icon_Sair} name="Sair" to="#" />
         </Card>
       </aside>
