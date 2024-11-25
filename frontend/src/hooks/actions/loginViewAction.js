@@ -1,8 +1,11 @@
+// Dependências:
+import axios from 'axios'
 import { redirect } from 'react-router-dom'
-import requestLogin from 'src/api/requestLogin'
-import CreateUserCookie from 'hooks/cookies/CreateUserCookie'
+
+const createCookie = (name, value) => document.cookie = `${name}=${value}`
 
 async function loginViewAction({ request }) {
+  const baseUrl = import.meta.env.VITE_API_BASE_URL
   const formData = await request.formData()
 
   const submission = {
@@ -11,11 +14,11 @@ async function loginViewAction({ request }) {
   }
 
   try {
-    const response = await requestLogin(submission)
+    const response = await axios.post(`${baseUrl}/funcionarios/login`, submission)
     console.log(response)
 
-    const { token, funcionarioId } = response.data
-    CreateUserCookie(token, funcionarioId)
+    const { token } = response.data
+    createCookie("user", token)
 
     return redirect('/app')
   } catch (error) {
