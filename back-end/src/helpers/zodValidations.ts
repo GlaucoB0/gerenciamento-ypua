@@ -28,7 +28,6 @@ export const createClientSchema = z.object({
 })
 
 export const createRoomSchema = z.object({
-    identificacao: z.string({message: "A identificação deve ser uma string"}).regex(regexIdQuarto, {message: "Deve seguir o modelo de ZX onde Z é uma letra e X um número"}),
     nome: z.string({message: "O Nome deve ser uma string!"}).min(3, {message: "O Nome deve conter ao menos 3 caracteres!"}).max(50, {message: "O Nome não deve ultrapassar 50 caracteres"}),
     descricao: z.string({message: "A Descrição deve ser uma string!"}).min(3, {message: "A Descrição deve conter ao menos 3 caracteres!"}).max(100, {message: "A Descrição não deve ultrapassar 100 caracteres"}),
     camas_solteiros: z.number({message: "Deve ser um número"}),
@@ -38,14 +37,14 @@ export const createRoomSchema = z.object({
     disponivel: z.boolean(),
     image: z.optional(z.string({message: "Deve ser uma string com o caminho da imagem"})),
     amenidades: z.object({
-        arCondicionado: z.boolean(),
-        wifi: z.boolean(),
-        tv: z.boolean(),
-        geladeira: z.boolean(),
-        ducha: z.boolean(),
-        banheira: z.boolean(),
-        cozinha: z.boolean(),
-        toalhas: z.boolean()
+        arCondicionado: true,
+        wifi: true,
+        tv: true,
+        geladeira: true,
+        ducha: true,
+        banheira: true,
+        cozinha: true,
+        toalhas: true
     })
 })
 

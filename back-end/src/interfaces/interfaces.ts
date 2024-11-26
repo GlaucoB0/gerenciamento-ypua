@@ -19,7 +19,6 @@ export interface Reservas {
 }
 
 export interface Quarto {
-    identificacao: string;
     nome: string;
     descricao: string;
     camas_solteiros: number;
