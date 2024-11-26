@@ -9,7 +9,10 @@ export const criarTarefa = async (req: Request, res: Response) => {
         const bodyValidation = createTaskSchema.safeParse(req.body);
 
         if (!bodyValidation.success) {
-            return res.status(400).json({ message: "Os dados recebidos no corpo da aplicação são invalidos", detalhes: formatZodError(bodyValidation.error) });
+            return res.status(400).json({ 
+                message: "Os dados recebidos no corpo da aplicação são invalidos", 
+                detalhes: formatZodError(bodyValidation.error) 
+            });
         }
 
         const tarefa:Tarefa = bodyValidation.data;

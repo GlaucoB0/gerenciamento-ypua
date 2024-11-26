@@ -57,31 +57,35 @@ export const getByName =async (nome: string) => {
 }
 
 export const getClietsId = async (id: string) => {
-    const clients:any = await prisma.reserva.findFirst({where: {reserva_id: id}, include: {
+    const client = await prisma.reserva.findFirst({where: {reserva_id: id}, include: {
         quarto: true
     }});
 
+    if (!client) {
+        return null
+    }
+
     const clientNew = {
         cliente: {
-            nome: clients.nome,
-            cpf: clients.cpf,
-            telefone: clients.telefone,
-            data_nascimento: clients.data_nascimento
+            nome: client.nome,
+            cpf: client.cpf,
+            telefone: client.telefone,
+            data_nascimento: client.data_nascimento
         },
         reserva: {
-            acomodacao: clients.quarto.nome,
-            reservado: clients.data_reserva,
-            check_in: clients.check_in,
-            check_out: clients.check_out
+            acomodacao: client.quarto.nome,
+            reservado: client.data_reserva,
+            check_in: client.check_in,
+            check_out: client.check_out
         },
         endereco: {
-            cep: clients.cep,
-            bairro: clients.bairro,
-            numero: clients.numero,
-            cidade: clients.cidade,
-            estado: clients.estado,
-            pais: clients.pais,
-            complemento: clients.endereco
+            cep: client.cep,
+            bairro: client.bairro,
+            numero: client.numero,
+            cidade: client.cidade,
+            estado: client.estado,
+            pais: client.pais,
+            complemento: client.endereco
         }
     }
     return clientNew
