@@ -30,7 +30,6 @@ model Funcionario {
 model Quarto {
   quarto_id String @id @default(uuid())
 
-  identificacao String @db.TinyText
   nome String @db.Text
   descricao String @db.Char(100)
   camas_solteiros Int
