@@ -15,7 +15,8 @@ const AppView = () => {
       <aside className={$.aside}>
         <Card
           orientation='vertical'
-          padding={3}>
+          padding={3}
+          style={{ height: '100%' }}>
           <Navbar.Root>
             <Navbar.Link imgSrc={icon_VisaoGeral} 
               name="Visão Geral" to="/dashboard/geral" />
@@ -32,7 +33,9 @@ const AppView = () => {
           <Navbar.Link imgSrc={icon_Sair} name="Sair" to="#" />
         </Card>
       </aside>
-      <Outlet />
+      <main className={$.main}>
+        <Outlet />
+      </main>
     </>
   )
 }
