@@ -1,0 +1,27 @@
+@use 'styles/variables' as vs
+
+@mixin block($w: 50px, $h: 50px)
+  width: $w
+  height: $h
+  border-radius: 0.25rem
+  background-color: vs.$colors-red
+
+.inline_text
+  display: inline-flex
+  align-items: flex-end
+  gap: .25rem
+  
+  p
+    line-height: 50px
+
+.block_group
+  display: flex
+  margin-left: 8px
+  flex-direction: column
+  gap: 8px
+
+.block_s1
+  @include block($w: 75px, $h: 60px)
+
+.block_s2
+  @include block($w: 75px, $h: 100px)

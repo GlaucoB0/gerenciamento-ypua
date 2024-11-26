@@ -6,13 +6,14 @@ import loginViewAction from 'hooks/actions/loginViewAction'
 import loginViewLoader from 'hooks/loaders/loginViewLoader'
 import dashboardLoader from 'hooks/loaders/dashboardLoader'
 
+// Componentes globais:
+import Header from 'components/Header/Header'
+
 // Views e páginas:
 import Login from 'views/Login/Login'
 import Dashboard from 'views/Dashboard/Dashboard'
 import ListaDeHospedes from 'pages/ListaDeHospedes/ListaDeHospedes'
-
-// Componentes globais:
-import Header from 'components/Header/Header'
+import VisaoGeral from 'pages/VisaoGeral/VisaoGeral'
 
 const isUserLogged = () => localStorage.getItem("user") !== undefined
 
@@ -36,7 +37,8 @@ const router = createBrowserRouter([
     children: [
       /* ‼ IMPORTANTE: Inserir as páginas aqui */
       {
-        path: "/dashboard/geral"
+        path: "/dashboard/geral",
+        element: <VisaoGeral />
       },
       {
         path: "/dashboard/acomodacoes",
