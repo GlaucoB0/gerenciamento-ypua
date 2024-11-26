@@ -11,7 +11,10 @@ function getCardClass(orientation) {
   }
 }
 
-const Card = ({ orientation = 'vertical', style: additionalStyle, padding = 1, children }) => {
+const Card = ({ 
+  orientation = 'vertical', style: additionalStyle, 
+  padding = 1, children 
+}) => {
   const style = getCardClass(orientation)
 
   return (
