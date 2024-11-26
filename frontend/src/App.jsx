@@ -5,16 +5,20 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import loginViewAction from 'hooks/actions/loginViewAction'
 import loginViewLoader from 'hooks/loaders/loginViewLoader'
 import dashboardLoader from 'hooks/loaders/dashboardLoader'
-// import applicationLoader from 'hooks/loaders/applicationLoader'
 
 // Views e componentes:
 import Login from 'views/Login/Login'
 import Dashboard from 'views/Dashboard/Dashboard'
 import Header from 'components/Header/Header'
 
+const isUserLogged = () => localStorage.getItem("user") !== undefined
+
 const router = createBrowserRouter([
   {
-    path: "/"
+    path: "/",
+    element: isUserLogged 
+      ? <Navigate to="/dashboard" /> // <- Caso esteja logado
+      : <Navigate to="/login" />     // <- Caso não esteja logado
   },
   {
     path: "/login",
@@ -27,6 +31,7 @@ const router = createBrowserRouter([
     element: <Dashboard />,
     loader: dashboardLoader,
     children: [
+      /* ‼ IMPORTANTE: Inserir as páginas aqui */
       {
         path: "/dashboard/geral",
       },
