@@ -9,19 +9,22 @@ export const criarCliente = async (req: Request, res: Response) => {
         const bodyValidation = createClientSchema.safeParse(req.body);
 
         if (!bodyValidation.success) {
-            return res.status(400).json({ message: "Os dados recebidos no corpo da aplicação são invalidos", detalhes: formatZodError(bodyValidation.error) });
+            return res.status(400).json({ 
+                message: "Os dados recebidos no corpo da aplicação são invalidos", 
+                detalhes: formatZodError(bodyValidation.error) 
+            });
         }
 
         const validarQuarto = await validaQuarto(bodyValidation.data.quarto_id)
         if (!validarQuarto) {
-            res.status(403).json({ message: "O quarto não está disponivel" })
+            return res.status(403).json({ message: "O quarto não está disponivel" })
         }
 
         let reserva = bodyValidation.data;
-        reserva.check_in = new Date(reserva.check_in);
-        reserva.check_out = new Date(reserva.check_out);
-        reserva.data_nascimento = new Date(reserva.data_nascimento);
-        reserva.data_reserva = new Date(reserva.data_reserva);
+        reserva.check_in = new Date(reserva.check_in).toDateString();
+        reserva.check_out = new Date(reserva.check_out).toDateString();
+        reserva.data_nascimento = new Date(reserva.data_nascimento).toDateString();
+        reserva.data_reserva = new Date(reserva.data_reserva).toDateString();
 
         const client: Reservas = reserva;
         const clienteCriado = await createClientService(client);
@@ -38,10 +41,6 @@ export const criarCliente = async (req: Request, res: Response) => {
 export const listarClientes = async (req: Request, res: Response) => {
     try {
         const clients = await getAllClient();
-        // if (clients.length == 0) {
-        //     res.status(404).json({ message: "Não foram encontrados clientes!" })
-        // }
-
         res.status(200).json(clients)
     } catch (error) {
         console.error(error)
@@ -54,7 +53,7 @@ export const listarClientesPorNome = async (req: Request, res: Response) => {
         const nome = req.body.nome;
         const allByName = await getByName(nome);
         if (allByName.length == 0) {
-            res.status(404).json({ message: "Não foram encontrados clientes!" })
+            return res.status(404).json({ message: "Não foram encontrados clientes!" })
         }
 
         res.status(200).json(allByName)
@@ -64,15 +63,16 @@ export const listarClientesPorNome = async (req: Request, res: Response) => {
     }
 }
 
-export const clientById =async (req: Request, res: Response) => {
+export const clientById = async (req: Request, res: Response) => {
     try {
         const id = req.params.id;
-        const allByName = await getClietsId(id);
-        if (allByName.length == 0) {
-            res.status(404).json({ message: "Não foram encontrados clientes!" })
+        const client = await getClietsId(id);
+        
+        if (!client) {
+            return res.status(404).json({ message: "Não foram encontrados clientes!" })
         }
 
-        res.status(200).json(allByName)
+        res.status(200).json(client)
     } catch (error) {
         console.error(error)
         res.status(500).json({ error: error })

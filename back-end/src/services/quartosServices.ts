@@ -1,12 +1,15 @@
+import { ParsedQs } from "qs"
 import { PrismaClient } from '@prisma/client';
+
+type RoomStatus = string | ParsedQs | string[] | ParsedQs[] | undefined
 
 const prisma = new PrismaClient();
 
 export const createRoomService = async (quarto: object) => {
-    return prisma.quarto.create({data: quarto});
+    return prisma.quarto.create({ data: quarto });
 }
 
-export const listRooms = async (status: String) => {
+export const listRooms = async (status: RoomStatus) => {
     if(status){
         if(status == 'disponivel'){
             return prisma.quarto.findMany({select: {

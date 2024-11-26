@@ -1,25 +1,24 @@
 export interface Reservas {
-    nome: String;
-    email: String;
-    cep: String;
-    data_nascimento: String;
-    numero: Number;
-    endereco: String;
-    bairro: String;
-    cidade: String;
-    estado: String;
-    pais: String;
-    telefone: String;
-    cpf: String;
-    data_reserva: Date;
-    check_in: Date;
-    check_out: Date;
-    quarto_id: String;
-    funcionario_id: String;
+    nome: string;
+    email: string;
+    cep: string;
+    data_nascimento: string;
+    numero: number;
+    endereco: string;
+    bairro: string;
+    cidade: string;
+    estado: string;
+    pais: string;
+    telefone: string;
+    cpf: string;
+    data_reserva: Date | string;
+    check_in: Date | string;
+    check_out: Date | string;
+    quarto_id: string;
+    funcionario_id: string;
 }
 
 export interface Quarto {
-    identificacao: string;
     nome: string;
     descricao: string;
     camas_solteiros: number;
