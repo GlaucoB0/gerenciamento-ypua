@@ -36,8 +36,7 @@ const router = createBrowserRouter([
     children: [
       /* ‼ IMPORTANTE: Inserir as páginas aqui */
       {
-        path: "/dashboard/geral",
-        element: <ListaDeHospedes />
+        path: "/dashboard/geral"
       },
       {
         path: "/dashboard/acomodacoes",
@@ -47,6 +46,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/hospedes",
+        element: <ListaDeHospedes />
       },
       {
         path: "/dashboard/hospedes/hospede/:hospedeId",
