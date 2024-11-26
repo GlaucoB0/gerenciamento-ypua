@@ -1,11 +1,62 @@
-import { Outlet } from 'react-router-dom';
-import Header from './components/Header/Header';
+// Dependências:
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
+
+// Hooks:
+import loginViewAction from 'hooks/actions/loginViewAction'
+import loginViewLoader from 'hooks/loaders/loginViewLoader'
+import dashboardLoader from 'hooks/loaders/dashboardLoader'
+// import applicationLoader from 'hooks/loaders/applicationLoader'
+
+// Views e componentes:
+import Login from 'views/Login/Login'
+import Dashboard from 'views/Dashboard/Dashboard'
+import Header from 'components/Header/Header'
+
+const router = createBrowserRouter([
+  {
+    path: "/"
+  },
+  {
+    path: "/login",
+    element: <Login />,
+    loader: loginViewLoader,
+    action: loginViewAction
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    loader: dashboardLoader,
+    children: [
+      {
+        path: "/dashboard/geral",
+      },
+      {
+        path: "/dashboard/acomodacoes",
+      },
+      {
+        path: "/dashboard/acomodacoes/acomodacao/:acomodacaoId",
+      },
+      {
+        path: "/dashboard/hospedes",
+      },
+      {
+        path: "/dashboard/hospedes/hospede/:hospedeId",
+      },
+      {
+        path: "/dashboard/criarAcomodacao",
+      },
+      {
+        path: "/dashboard/criarFuncionario",
+      },
+    ]
+  }
+]);
 
 const App = () => {
   return (
     <>
       <Header title="Gerenciamento" />
-      <Outlet />
+      <RouterProvider router={router} />
     </>
   )
 }
