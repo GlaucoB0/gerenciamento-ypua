@@ -13,6 +13,7 @@ import ListaDeHospedes from 'pages/ListaDeHospedes/ListaDeHospedes'
 
 // Componentes globais:
 import Header from 'components/Header/Header'
+import ListaDeAcomodacoes from './pages/ListaDeAcomodacoes/ListaDeAcomodacoes'
 
 const isUserLogged = () => localStorage.getItem("user") !== undefined
 
@@ -40,6 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/acomodacoes",
+        element: <ListaDeAcomodacoes/>
       },
       {
         path: "/dashboard/acomodacoes/acomodacao/:acomodacaoId",
