@@ -6,9 +6,12 @@ import loginViewAction from 'hooks/actions/loginViewAction'
 import loginViewLoader from 'hooks/loaders/loginViewLoader'
 import dashboardLoader from 'hooks/loaders/dashboardLoader'
 
-// Views e componentes:
+// Views e páginas:
 import Login from 'views/Login/Login'
 import Dashboard from 'views/Dashboard/Dashboard'
+import ListaDeHospedes from 'pages/ListaDeHospedes/ListaDeHospedes'
+
+// Componentes globais:
 import Header from 'components/Header/Header'
 
 const isUserLogged = () => localStorage.getItem("user") !== undefined
@@ -34,6 +37,7 @@ const router = createBrowserRouter([
       /* ‼ IMPORTANTE: Inserir as páginas aqui */
       {
         path: "/dashboard/geral",
+        element: <ListaDeHospedes />
       },
       {
         path: "/dashboard/acomodacoes",

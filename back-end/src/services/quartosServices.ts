@@ -24,6 +24,7 @@ export const listRooms = async (status: RoomStatus) => {
             }});
         }else if(status == 'ocupado'){
             return prisma.quarto.findMany({select: {
+                quarto_id: true,
                 nome: true,
                 descricao: true,
                 amenidades: true,
@@ -35,6 +36,7 @@ export const listRooms = async (status: RoomStatus) => {
         }
     }
     return prisma.quarto.findMany({select: {
+        quarto_id: true,
         nome: true,
         descricao: true,
         amenidades: true,
