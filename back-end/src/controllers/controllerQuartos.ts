@@ -33,7 +33,7 @@ export const listarQuartos =async (req: Request, res: Response) => {
         if(query == 'list'){
             const status = req.query.status;
             const rooms = await listRooms(status);
-            res.status(200).json(rooms)
+            return res.status(200).json(rooms)
         }
     } catch (error) {
         console.error(error)
