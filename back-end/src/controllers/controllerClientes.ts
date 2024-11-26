@@ -21,10 +21,10 @@ export const criarCliente = async (req: Request, res: Response) => {
         }
 
         let reserva = bodyValidation.data;
-        reserva.check_in = new Date(reserva.check_in).toDateString();
-        reserva.check_out = new Date(reserva.check_out).toDateString();
-        reserva.data_nascimento = new Date(reserva.data_nascimento).toDateString();
-        reserva.data_reserva = new Date(reserva.data_reserva).toDateString();
+        // reserva.check_in = new Date(reserva.check_in).toDateString();
+        // reserva.check_out = new Date(reserva.check_out).toDateString();
+        // reserva.data_nascimento = new Date(reserva.data_nascimento).toDateString();
+        // reserva.data_reserva = new Date(reserva.data_reserva).toDateString();
 
         const client: Reservas = reserva;
         const clienteCriado = await createClientService(client);
