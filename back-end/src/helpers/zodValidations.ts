@@ -37,14 +37,14 @@ export const createRoomSchema = z.object({
     disponivel: z.boolean(),
     image: z.optional(z.string({message: "Deve ser uma string com o caminho da imagem"})),
     amenidades: z.object({
-        arCondicionado: true,
-        wifi: true,
-        tv: true,
-        geladeira: true,
-        ducha: true,
-        banheira: true,
-        cozinha: true,
-        toalhas: true
+        arCondicionado: z.boolean(),
+        wifi: z.boolean(),
+        tv: z.boolean(),
+        geladeira: z.boolean(),
+        ducha: z.boolean(),
+        banheira: z.boolean(),
+        cozinha: z.boolean(),
+        toalhas: z.boolean()
     })
 })
 
