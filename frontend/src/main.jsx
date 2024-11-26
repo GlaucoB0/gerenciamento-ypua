@@ -13,6 +13,7 @@ import 'styles/main.scss'
 import App from 'src/App'
 import Login from 'src/views/Login/Login'
 import Dashboard from 'src/views/Dashboard/Dashboard'
+import ListaDeHospedes from './pages/ListaDeHospedes/ListaDeHospedes'
 
 const router = createBrowserRouter([
   {
@@ -41,6 +42,7 @@ const router = createBrowserRouter([
           },
           {
             path: "/dashboard/hospedes",
+            element: <ListaDeHospedes />
           },
           {
             path: "/dashboard/hospedes/hospede/:hospedeId",
