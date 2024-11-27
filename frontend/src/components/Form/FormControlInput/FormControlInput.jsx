@@ -19,7 +19,7 @@ const FormControlInput = ({type: givenType, placeholder, iconSrc}) => {
       <img 
         className={$.icon}
         src={iconSrc}
-        alt={`Ícone do campo ${label || 'de entrada'}`}
+        alt={iconSrc && `Ícone do campo ${label || 'de entrada'}`}
         draggable={false}
         onClick={handleImgClick}
         style={imgVariableStyle} />
