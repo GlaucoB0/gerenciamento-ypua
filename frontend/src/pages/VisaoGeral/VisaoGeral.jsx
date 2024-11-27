@@ -1,7 +1,7 @@
 import $ from './VisaoGeral.module.scss'
 
 // Dependências:
-import { Link } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 
 // Componentes:
 import Card from 'components/Card/Card'
@@ -17,6 +17,8 @@ const ReservasTitle = () => {
 }
 
 export default function VisaoGeral() {
+  const { acomodacoes } = useLoaderData()
+
   return (
     <div className={$.page_grid}>
       <Card orientation='horizontal' style={{ 
@@ -32,8 +34,12 @@ export default function VisaoGeral() {
             para hospedagem atualmente.
           </Text>
           <hgroup className={$.inline_text}>
-            <Text type='GiantText' fontFamily='black'>06</Text>
-            <Text type='Subtitle'>de 06</Text>
+            <Text type='GiantText' fontFamily='black'>
+              {acomodacoes.livre}
+            </Text>
+            <Text type='Subtitle'>
+              de {acomodacoes.total}
+            </Text>
           </hgroup>
         </section>
         <section className={$.block_group}>

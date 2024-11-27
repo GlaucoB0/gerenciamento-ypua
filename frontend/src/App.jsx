@@ -5,6 +5,7 @@ import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 import loginViewAction from 'hooks/actions/loginViewAction'
 import loginViewLoader from 'hooks/loaders/loginViewLoader'
 import dashboardLoader from 'hooks/loaders/dashboardLoader'
+import visaoGeralLoader from 'hooks/loaders/visaoGeralLoader'
 
 // Componentes globais:
 import Header from 'components/Header/Header'
@@ -42,7 +43,8 @@ const router = createBrowserRouter([
       /* ‼ IMPORTANTE: Inserir as páginas aqui */
       {
         path: "/dashboard/geral",
-        element: <VisaoGeral />
+        element: <VisaoGeral />,
+        loader: visaoGeralLoader
       },
       {
         path: "/dashboard/acomodacoes",
