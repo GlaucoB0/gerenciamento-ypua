@@ -2,7 +2,7 @@ import $ from './FormControlInput.module.sass'
 import { useContext, useState } from 'react'
 import FormControlContext from 'hooks/contexts/FormControlContext';
 
-const FormControlInput = ({type: givenType, placeholder, iconSrc}) => {
+const FormControlInput = ({type: givenType, placeholder, iconSrc, onChange}) => {
   const {name, label} = useContext(FormControlContext)
   const [currentType, setCurrentType] = useState(givenType)
 
@@ -23,7 +23,8 @@ const FormControlInput = ({type: givenType, placeholder, iconSrc}) => {
         draggable={false}
         onClick={handleImgClick}
         style={imgVariableStyle} />
-      <input 
+      <input
+        onChange={onChange}
         className={$.input}
         type={currentType} 
         name={name} 
