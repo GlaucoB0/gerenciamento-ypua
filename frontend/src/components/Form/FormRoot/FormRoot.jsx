@@ -1,8 +1,8 @@
 import { Form } from "react-router-dom";
 
-const FormRoot = ({ method, action, children }) => {
+const FormRoot = ({ method, action, children, position }) => {
   return (
-    <Form method={method} action={action}>
+    <Form style={{position}} method={method} action={action}>
       {children}
     </Form>
   )

@@ -60,6 +60,7 @@ const AcomodacaoInfo = () => {
             <Form.Root
               method={"post"}
               action={`/dashboard/acomodacoes/${quarto.quarto_id}`}
+              position={'relative'}
             >
               <div className={$.containerSimulacao}>
                 <div className={$.containerInfo}>
@@ -67,15 +68,15 @@ const AcomodacaoInfo = () => {
                     {quarto.nome}
                   </Text>
                   <div style={{ display: "flex", gap: "30px" }}>
-                    <Text color="light-gray">Acomoda: {quarto.acomoda}</Text>
-                    <Text color="light-gray">
+                    <Text color="gray">Acomoda: {quarto.acomoda}</Text>
+                    <Text color="gray">
                       Camas Solteiro:
                       {" " + quarto.camas_solteiros}, Camas Casais:
                       {" " + quarto.cama_casais}
                     </Text>
                   </div>
                   <div>
-                    <Text color="light-gray">Amenidades</Text>
+                    <Text color="gray">Amenidades</Text>
                     <div className={$.amenidades}>
                       {quarto.amenidades.tv && (
                         <img
@@ -130,7 +131,7 @@ const AcomodacaoInfo = () => {
 
                   <div>
                     <div className={$.grid3}>
-                      <Form.Control.Root name={"check_in"}>
+                      <Form.Control.Root width={''} name={"check_in"}>
                         <Form.Control.Input
                           type={"date"}
                           onChange={({ target }) => {
@@ -174,7 +175,7 @@ const AcomodacaoInfo = () => {
               <hr style={{ margin: "25px" }} />
 
               <TitleForm
-                color={"light-gray"}
+                color={"gray"}
                 text={"Informações do Cliente"}
                 img={"icon-userr.png"}
               />
@@ -199,7 +200,7 @@ const AcomodacaoInfo = () => {
                 </Form.Control.Root>
               </div>
               <TitleForm
-                color={"light-gray"}
+                color={"gray"}
                 text={"Informações de Endereço"}
                 img={"icon-casa.png"}
               />
@@ -229,7 +230,7 @@ const AcomodacaoInfo = () => {
                   <Form.Control.Input placeholder={"Pais..."} />
                 </Form.Control.Root>
               </div>
-              <Form.Submit isEnabled={"true"}> Criar </Form.Submit>
+              <Button style={{position: 'absolute', right: 0, bottom: 0, width: '150px', height: '70px'}}> Criar </Button>
             </Form.Root>
           </>
         )}

@@ -2,7 +2,7 @@ import $ from './FormControlInput.module.sass'
 import { useContext, useState } from 'react'
 import FormControlContext from 'hooks/contexts/FormControlContext';
 
-const FormControlInput = ({type: givenType, placeholder, iconSrc, onChange}) => {
+const FormControlInput = ({type: givenType, placeholder, iconSrc, onChange, width = '100%'}) => {
   const {name, label} = useContext(FormControlContext)
   const [currentType, setCurrentType] = useState(givenType)
 
@@ -15,7 +15,7 @@ const FormControlInput = ({type: givenType, placeholder, iconSrc, onChange}) => 
   }
 
   return (
-    <div className={$.input_wrapper}>
+    <div className={$.input_wrapper} style={{width}}>
       <img 
         className={$.icon}
         src={iconSrc}

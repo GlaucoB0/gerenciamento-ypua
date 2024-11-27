@@ -2,6 +2,7 @@ import Form from "src/components/Form";
 import Titulo from "src/components/Titulo/Titulo";
 import $ from "./CriarFuncionario.module.sass";
 import TitleForm from "src/components/TitleForm/TitleForm";
+import Button from "src/components/Button/Button";
 
 const CriarFuncionario = () => {
     return (
@@ -36,7 +37,7 @@ const CriarFuncionario = () => {
                             <Form.Control.Input givenType={"password"} placeholder={"Senha"} />
                         </Form.Control.Root>
                     </div>
-                    <Form.Submit isEnabled={"true"}> Criar </Form.Submit>
+                    <Button style={{position: 'absolute', right: '50px', bottom: '30px', width: '150px', height: '70px'}}> Criar </Button>
                 </Form.Root>
             </div>
         </>

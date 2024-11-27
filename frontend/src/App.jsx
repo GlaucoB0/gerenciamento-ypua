@@ -23,6 +23,7 @@ import Header from "components/Header/Header";
 import ListaDeAcomodacoes from "./pages/ListaDeAcomodacoes/ListaDeAcomodacoes";
 import AcomodacaoInfo from "./pages/ListaDeAcomodacoes/AcomodacaoInfo/AcomodacaoInfo.jsx";
 import HospedeInfo from "./pages/ListaDeHospedes/HospedeInfo/HospedeInfo.jsx";
+import CriarAcomodacao from "./pages/CriarAcomodacao/CriarAcomodacao.jsx";
 
 
 const isUserLogged = () => localStorage.getItem("user") !== undefined;
@@ -70,6 +71,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/criarAcomodacao",
+        element: <CriarAcomodacao/>
       },
       {
         path: "/dashboard/criarFuncionario",
