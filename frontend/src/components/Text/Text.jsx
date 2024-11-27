@@ -7,6 +7,9 @@ function getStyles(color, fontFamily) {
     case "red":
       styles.color = "#7E2726";
       break;
+    case "light-gray":
+      styles.color = "#D9D9D9";
+      break;
     case "gray":
       styles.color = "#888888";
       break;
