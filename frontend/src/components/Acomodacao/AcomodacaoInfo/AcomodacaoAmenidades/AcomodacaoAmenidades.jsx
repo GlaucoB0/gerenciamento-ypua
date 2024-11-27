@@ -5,7 +5,7 @@ import Text from "src/components/Text/Text";
 const AcomodacaoAmenidades = ({ amenidades = {} }) => {
   return (
     <div className={$.container}>
-      <Text type="Bold" color="dark-gray">
+      <Text fontFamily="bold" color="dark-gray">
         Amenidades
       </Text>
       <div className={$.amenidades}>
