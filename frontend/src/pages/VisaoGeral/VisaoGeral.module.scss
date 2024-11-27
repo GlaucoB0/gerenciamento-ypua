@@ -1,0 +1,104 @@
+@use 'styles/variables' as vs;
+@use 'styles/elements' as el;
+
+.hr {
+  margin-block: 1rem;
+  width: 75%;
+  height: 1px;
+
+  color: vs.$colors-gray;
+}
+
+.page_grid {
+  display: grid;
+  width: fit-content;
+  gap: 1rem;
+  grid-template-areas: 
+    'header header menu menu right right'
+    'main main main main right right'
+    'footer footer footer footer footer footer';
+}
+
+.inline_text {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: .25rem;
+  
+  p {
+    line-height: 50px;
+  }
+}
+
+.block_group {
+  display: flex;
+  margin-left: 8px;
+  flex-direction: column;
+  gap: 8px;
+}
+@mixin block($w: 50px, $h: 50px) {
+  width: $w;
+  height: $h;
+  border-radius: 0.25rem;
+  background-color: vs.$colors-red;
+}
+.block_s1 {
+  @include block($w: 75px, $h: 60px);
+}
+.block_s2 {
+  @include block($w: 75px, $h: 100px);
+}
+
+%block_mini {
+  @include block($w: 35px, $h: 35px);
+}
+.block_mini_blue {
+  @extend %block_mini;
+  background-color: vs.$colors-pastel-blue;
+}
+.block_mini_green {
+  @extend %block_mini;
+  background-color: vs.$colors-pastel-green;
+}
+.block_mini_yellow {
+  @extend %block_mini;
+  background-color: vs.$colors-pastel-yellow;
+}
+.block_mini_red {
+  @extend %block_mini;
+  background-color: vs.$colors-pastel-red;
+}
+
+.text_wrapper {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.button {
+  @include el.button($margin-block: 0);
+  text-decoration: none;
+}
+
+.reserves {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+}
+
+.reserves_by_type {
+  display: inherit;
+  justify-content: space-between;
+  align-items: flex-end;
+  
+  width: 75%;
+  
+  list-style-type: none;
+
+  h2 {
+    line-height: 24px;
+  }
+}
