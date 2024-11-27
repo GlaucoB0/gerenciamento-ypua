@@ -16,6 +16,7 @@ import CriarFuncionario from './pages/CriarFuncionario/CriarFuncionario'
 // Componentes globais:
 import Header from 'components/Header/Header'
 import ListaDeAcomodacoes from './pages/ListaDeAcomodacoes/ListaDeAcomodacoes'
+import CriarAcomodacoes from './pages/CriarAcomodacoes/CriarAcomodacoes.jsx'
 
 
 
@@ -59,6 +60,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/criarAcomodacao",
+        element: <CriarAcomodacoes />
       },
       {
         path: "/dashboard/criarFuncionario",
