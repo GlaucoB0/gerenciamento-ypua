@@ -90,3 +90,7 @@ export const getClietsId = async (id: string) => {
     }
     return clientNew
 }
+
+export const deleteClientService = async (id:string) => {
+    return prisma.reserva.delete({where: {reserva_id: id}});
+}

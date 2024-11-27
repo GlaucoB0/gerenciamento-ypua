@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import { createClientSchema } from "../helpers/zodValidations";
 import { Reservas } from '../interfaces/interfaces';
-import { createClientService, birthValidation, getAllClient, validaQuarto, getByName, getClietsId } from '../services/clientesServices'
+import { createClientService, birthValidation, getAllClient, validaQuarto, getByName, getClietsId, deleteClientService } from '../services/clientesServices'
 import formatZodError from '../helpers/formatZodError';
 
 export const criarCliente = async (req: Request, res: Response) => {
@@ -73,6 +73,23 @@ export const clientById = async (req: Request, res: Response) => {
         }
 
         res.status(200).json(client)
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({ error: error })
+    }
+}
+
+export const deleteClient = async (req: Request, res: Response) => {
+    try {
+        const id = req.params.id;
+        const client = await getClietsId(id);
+
+        if (!client) {
+            return res.status(404).json({ message: "Não foram encontrados clientes!" })
+        }
+
+        await deleteClientService(id);
+        res.status(204).end();
     } catch (error) {
         console.error(error)
         res.status(500).json({ error: error })
