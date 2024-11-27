@@ -48,7 +48,7 @@ const ListaDeAcomodacoes = () => {
                 <Acomodacao.Info.Root>
                   <Acomodacao.Info.Descricao
                     titulo={a.nome}
-                    text={a.descricao}
+                    data={{camas_solteiros: a.camas_solteiros, cama_casais: a.cama_casais}}
                   />
                   <Acomodacao.Info.Amenidades amenidades={a.amenidades} />
                   <Acomodacao.Button text={"Mais informações"} />
