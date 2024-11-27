@@ -9,7 +9,7 @@ const ListaDeHospedesLoader = (setter) => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   console.log(baseUrl);
   axios
-    .get("http://localhost:3333/clientes/listarClientes")
+    .get(baseUrl+"/clientes/listarClientes")
     .then((response) => {
       console.log(response.data);
       setter(response.data);

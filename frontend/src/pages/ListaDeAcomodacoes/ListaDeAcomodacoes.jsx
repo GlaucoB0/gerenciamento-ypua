@@ -9,7 +9,7 @@ const ListaDeAcomodacoesLoader = (setter, loading) => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   console.log(baseUrl);
   axios
-    .get("http://localhost:3333/quartos/listarQuartos/list")
+    .get(baseUrl+"/quartos/listarQuartos/list")
     .then((response) => {
       setter(response.data);
       loading(true)
