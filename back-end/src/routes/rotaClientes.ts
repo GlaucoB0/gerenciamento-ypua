@@ -8,6 +8,6 @@ router.post('/criarClientes', criarCliente);
 router.get('/listarClientes', listarClientes);
 router.get('/porNome/:nome', listarClientesPorNome);
 router.get('/porId/:id', clientById);
-router.delete('/deleteById', deleteClient)
+router.delete('/deleteById/:id', deleteClient)
 
 export default router;
