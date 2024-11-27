@@ -1,10 +1,11 @@
 @use 'styles/variables' as vs
+@use 'styles/elements' as el
 
-@mixin block($w: 50px, $h: 50px)
-  width: $w
-  height: $h
-  border-radius: 0.25rem
-  background-color: vs.$colors-red
+.page_grid
+  display: grid
+  row-gap: 1rem
+  column-gap: 1rem
+  grid-template-areas: 'A A A B B C C' 'D D D D D C C' 'E E E E E E E'
 
 .inline_text
   display: inline-flex
@@ -13,6 +14,12 @@
   
   p
     line-height: 50px
+
+@mixin block($w: 50px, $h: 50px)
+  width: $w
+  height: $h
+  border-radius: 0.25rem
+  background-color: vs.$colors-red
 
 .block_group
   display: flex
@@ -25,3 +32,13 @@
 
 .block_s2
   @include block($w: 75px, $h: 100px)
+
+.text_wrapper
+  display: flex
+  height: 100%
+  flex-direction: column
+  justify-content: space-between
+
+.button
+  @include el.button($margin-block: 0)
+  text-decoration: none
