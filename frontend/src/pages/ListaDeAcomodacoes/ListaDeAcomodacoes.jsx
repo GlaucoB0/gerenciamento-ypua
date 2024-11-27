@@ -36,13 +36,7 @@ const ListaDeAcomodacoes = () => {
       <Titulo links={["Lista de Acomodações"]} />
 
       <div className={$.containerAcomodacoes}>
-        {!removeLoading && (
-          <div>
-            <Text type="Title" color="red">
-              Loading...
-            </Text>
-          </div>
-        )}
+        {!removeLoading && <div></div>}
         {lista.length > 0 &&
           lista.map((a) => {
             return (
@@ -60,7 +54,7 @@ const ListaDeAcomodacoes = () => {
                   <Acomodacao.Button
                     text={"Mais informações"}
                     onClick={() => {
-                      window.location.href = `/dashboard/acomodacoes/${a.quarto_id}`
+                      window.location.href = `/dashboard/acomodacoes/${a.quarto_id}`;
                     }}
                   />
                 </Acomodacao.Info.Root>

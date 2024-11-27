@@ -53,127 +53,130 @@ const AcomodacaoInfo = () => {
     <>
       <Titulo links={["Reserva", "Informações Detalhadas"]} />
       <div>
-        {!removeLoading && (
-          <Text type="Title" color="red">
-            Loading...
-          </Text>
-        )}
+        {!removeLoading && <div></div>}
 
         {Object.keys(quarto).length != 0 && (
           <>
-            <div className={$.containerSimulacao}>
-              <div className={$.containerInfo}>
-                <Text type="BigText" fontFamily="black">
-                  {quarto.nome}
-                </Text>
-                <div style={{ display: "flex", gap: "30px" }}>
-                  <Text color="light-gray">Acomoda: {quarto.acomoda}</Text>
-                  <Text color="light-gray">
-                    Camas Solteiro:
-                    {" " + quarto.camas_solteiros}, Camas Casais:
-                    {" " + quarto.cama_casais}
-                  </Text>
-                </div>
-                <div>
-                  <Text color="light-gray">Amenidades</Text>
-                  <div className={$.amenidades}>
-                    {quarto.amenidades.tv && (
-                      <img
-                        style={{ height: "100%" }}
-                        src={`/public/amenidades/tv.svg`}
-                      />
-                    )}
-                    {quarto.amenidades.wifi && (
-                      <img
-                        style={{ height: "100%" }}
-                        src={`/public/amenidades/wifi.svg`}
-                      />
-                    )}
-                    {quarto.amenidades.ducha && (
-                      <img
-                        style={{ height: "100%" }}
-                        src={`/public/amenidades/ducha.svg`}
-                      />
-                    )}
-                    {quarto.amenidades.cozinha && (
-                      <img
-                        style={{ height: "100%" }}
-                        src={`/public/amenidades/cozinha.svg`}
-                      />
-                    )}
-                    {quarto.amenidades.toalhas && (
-                      <img
-                        style={{ height: "100%" }}
-                        src={`/public/amenidades/toalhas.svg`}
-                      />
-                    )}
-                    {quarto.amenidades.banheira && (
-                      <img
-                        style={{ height: "100%" }}
-                        src={`/public/amenidades/banheira.svg`}
-                      />
-                    )}
-                    {quarto.amenidades.geladeira && (
-                      <img
-                        style={{ height: "100%" }}
-                        src={`/public/amenidades/geladeira.svg`}
-                      />
-                    )}
-                    {quarto.amenidades.arCondicionado && (
-                      <img
-                        style={{ height: "100%" }}
-                        src={`/public/amenidades/arCondicionado.svg`}
-                      />
-                    )}
-                  </div>
-                </div>
-                <Form.Root>
-                  <div className={$.grid3}>
-                    <Form.Control.Input
-                      type={"date"}
-                      onChange={({ target }) => {
-                        setCheckIn(target.value);
-                      }}
-                    />
-                    <Form.Control.Input
-                      type={"date"}
-                      onChange={({ target }) => {
-                        setCheckOut(target.value);
-                      }}
-                    />
-                    <Form.Control.Input placeholder={"Qtd Adultos"} />
-                  </div>
-                </Form.Root>
-                <div className={$.grid2}>
-                  <Button
-                    height={"64px"}
-                    onClick={() => {
-                      calculaPreco(checkIn, checkOut, setPreco, quarto.preco);
-                    }}
-                  >
-                    Simular Reserva
-                  </Button>
-                  <Text type="BigText" color="gray">
-                    {preco && `R$ ${preco}`}
-                  </Text>
-                </div>
-              </div>
-
-              <img
-                className={$.img}
-                src={`/public/quartos/${quarto.image}`}
-                alt=""
-              />
-            </div>
-            <hr style={{ margin: "25px" }} />
-
             <Form.Root
               method={"post"}
               action={`/dashboard/acomodacoes/${quarto.quarto_id}`}
             >
+              <div className={$.containerSimulacao}>
+                <div className={$.containerInfo}>
+                  <Text type="BigText" fontFamily="black">
+                    {quarto.nome}
+                  </Text>
+                  <div style={{ display: "flex", gap: "30px" }}>
+                    <Text color="light-gray">Acomoda: {quarto.acomoda}</Text>
+                    <Text color="light-gray">
+                      Camas Solteiro:
+                      {" " + quarto.camas_solteiros}, Camas Casais:
+                      {" " + quarto.cama_casais}
+                    </Text>
+                  </div>
+                  <div>
+                    <Text color="light-gray">Amenidades</Text>
+                    <div className={$.amenidades}>
+                      {quarto.amenidades.tv && (
+                        <img
+                          style={{ height: "100%" }}
+                          src={`/public/amenidades/tv.svg`}
+                        />
+                      )}
+                      {quarto.amenidades.wifi && (
+                        <img
+                          style={{ height: "100%" }}
+                          src={`/public/amenidades/wifi.svg`}
+                        />
+                      )}
+                      {quarto.amenidades.ducha && (
+                        <img
+                          style={{ height: "100%" }}
+                          src={`/public/amenidades/ducha.svg`}
+                        />
+                      )}
+                      {quarto.amenidades.cozinha && (
+                        <img
+                          style={{ height: "100%" }}
+                          src={`/public/amenidades/cozinha.svg`}
+                        />
+                      )}
+                      {quarto.amenidades.toalhas && (
+                        <img
+                          style={{ height: "100%" }}
+                          src={`/public/amenidades/toalhas.svg`}
+                        />
+                      )}
+                      {quarto.amenidades.banheira && (
+                        <img
+                          style={{ height: "100%" }}
+                          src={`/public/amenidades/banheira.svg`}
+                        />
+                      )}
+                      {quarto.amenidades.geladeira && (
+                        <img
+                          style={{ height: "100%" }}
+                          src={`/public/amenidades/geladeira.svg`}
+                        />
+                      )}
+                      {quarto.amenidades.arCondicionado && (
+                        <img
+                          style={{ height: "100%" }}
+                          src={`/public/amenidades/arCondicionado.svg`}
+                        />
+                      )}
+                    </div>
+                  </div>
+
+                  <div>
+                    <div className={$.grid3}>
+                      <Form.Control.Root name={"check_in"}>
+                        <Form.Control.Input
+                          type={"date"}
+                          onChange={({ target }) => {
+                            setCheckIn(target.value);
+                          }}
+                        />
+                      </Form.Control.Root>
+
+                      <Form.Control.Root name={"check_out"}>
+                        <Form.Control.Input
+                          type={"date"}
+                          onChange={({ target }) => {
+                            setCheckOut(target.value);
+                          }}
+                        />
+                      </Form.Control.Root>
+                      <Form.Control.Input placeholder={"Qtd Adultos"} />
+                    </div>
+                  </div>
+                  <div className={$.grid2}>
+                    <Button
+                      height={"64px"}
+                      onClick={() => {
+                        calculaPreco(checkIn, checkOut, setPreco, quarto.preco);
+                      }}
+                    >
+                      Simular Reserva
+                    </Button>
+                    <Text type="BigText" color="gray">
+                      {preco && `R$ ${preco}`}
+                    </Text>
+                  </div>
+                </div>
+
+                <img
+                  className={$.img}
+                  src={`/public/quartos/${quarto.image}`}
+                  alt=""
+                />
+              </div>
+              <hr style={{ margin: "25px" }} />
+
               <TitleForm
+                color={"light-gray"}
                 text={"Informações do Cliente"}
-                img={"icon-user-list.png"}
+                img={"icon-userr.png"}
               />
               <div className={$.form}>
                 <Form.Control.Root name={"nome"}>
@@ -196,27 +199,34 @@ const AcomodacaoInfo = () => {
                 </Form.Control.Root>
               </div>
               <TitleForm
-                text={"Informações do Cliente"}
-                img={"icon-user-list.png"}
-              /> 
-                            <div className={$.form}>
-                <Form.Control.Root name={"nome"}>
-                  <Form.Control.Input placeholder={"Nome Completo..."} />
+                color={"light-gray"}
+                text={"Informações de Endereço"}
+                img={"icon-casa.png"}
+              />
+              <div className={$.form}>
+                <Form.Control.Root name={"cep"}>
+                  <Form.Control.Input placeholder={"Digite seu Cep..."} />
                 </Form.Control.Root>
 
-                <Form.Control.Root name={"cpf"}>
-                  <Form.Control.Input placeholder={"Digite seu cpf..."} />
+                <Form.Control.Root name={"rua"}>
+                  <Form.Control.Input placeholder={"Rua/Avenida..."} />
                 </Form.Control.Root>
 
-                <Form.Control.Root name={"telefone"}>
-                  <Form.Control.Input placeholder={"Telefone..."} />
+                <Form.Control.Root name={"numero"}>
+                  <Form.Control.Input placeholder={"Numero..."} />
                 </Form.Control.Root>
-                <Form.Control.Root name={"email"}>
-                  <Form.Control.Input placeholder={"Email..."} />
+                <Form.Control.Root name={"complemento"}>
+                  <Form.Control.Input placeholder={"Complemento..."} />
                 </Form.Control.Root>
 
-                <Form.Control.Root name={"data_nascimento"}>
-                  <Form.Control.Input type={"date"} />
+                <Form.Control.Root name={"cidade"}>
+                  <Form.Control.Input placeholder={"Cidade..."} />
+                </Form.Control.Root>
+                <Form.Control.Root name={"estado"}>
+                  <Form.Control.Input placeholder={"Estado..."} />
+                </Form.Control.Root>
+                <Form.Control.Root name={"pais"}>
+                  <Form.Control.Input placeholder={"Pais..."} />
                 </Form.Control.Root>
               </div>
               <Form.Submit isEnabled={"true"}> Criar </Form.Submit>

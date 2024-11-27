@@ -10,6 +10,7 @@ import loginViewAction from "hooks/actions/loginViewAction";
 import loginViewLoader from "hooks/loaders/loginViewLoader";
 import dashboardLoader from "hooks/loaders/dashboardLoader";
 import criarFuncionarioAction from "./hooks/actions/criarFuncionarioAction.js";
+import criarAcomodacaoAction from "./hooks/actions/criarAcomodacaoAction.js";
 
 // Views e páginas:
 import Login from "views/Login/Login";
@@ -22,6 +23,7 @@ import Header from "components/Header/Header";
 import ListaDeAcomodacoes from "./pages/ListaDeAcomodacoes/ListaDeAcomodacoes";
 import AcomodacaoInfo from "./pages/ListaDeAcomodacoes/AcomodacaoInfo/AcomodacaoInfo.jsx";
 import HospedeInfo from "./pages/ListaDeHospedes/HospedeInfo/HospedeInfo.jsx";
+
 
 const isUserLogged = () => localStorage.getItem("user") !== undefined;
 
@@ -56,6 +58,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/acomodacoes/:acomodacaoId",
         element: <AcomodacaoInfo />,
+        action: criarAcomodacaoAction,
       },
       {
         path: "/dashboard/hospedes",
