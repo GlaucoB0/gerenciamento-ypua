@@ -16,6 +16,8 @@ export const listRooms = async (status: RoomStatus) => {
                 quarto_id: true,
                 nome: true,
                 descricao: true,
+                cama_casais:true,
+                camas_solteiros:true,
                 amenidades: true,
                 image: true,
                 disponivel: true
@@ -27,6 +29,8 @@ export const listRooms = async (status: RoomStatus) => {
                 quarto_id: true,
                 nome: true,
                 descricao: true,
+                cama_casais:true,
+                camas_solteiros:true,
                 amenidades: true,
                 image: true,
                 disponivel: true
@@ -39,6 +43,8 @@ export const listRooms = async (status: RoomStatus) => {
         quarto_id: true,
         nome: true,
         descricao: true,
+        cama_casais:true,
+        camas_solteiros:true,
         amenidades: true,
         image: true,
         disponivel: true
