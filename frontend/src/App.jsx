@@ -12,8 +12,9 @@ import Header from 'components/Header/Header'
 // Views e páginas:
 import Login from 'views/Login/Login'
 import Dashboard from 'views/Dashboard/Dashboard'
-import ListaDeHospedes from 'pages/ListaDeHospedes/ListaDeHospedes'
 import VisaoGeral from 'pages/VisaoGeral/VisaoGeral'
+import ListaDeHospedes from 'pages/ListaDeHospedes/ListaDeHospedes'
+import ListaDeAcomodacoes from 'pages/ListaDeAcomodacoes/ListaDeAcomodacoes'
 
 const isUserLogged = () => localStorage.getItem("user") !== undefined
 
@@ -42,6 +43,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/acomodacoes",
+        element: <ListaDeAcomodacoes/>
       },
       {
         path: "/dashboard/acomodacoes/acomodacao/:acomodacaoId",
