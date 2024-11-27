@@ -35,6 +35,9 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
     loader: dashboardLoader,
+    shouldRevalidate: ({ currentUrl }) => {
+      return currentUrl.pathname === "/dashboard/geral"
+    },
     children: [
       /* ‼ IMPORTANTE: Inserir as páginas aqui */
       {
