@@ -10,6 +10,9 @@ function getStyles(color, fontFamily) {
         case 'gray':
             styles.color = '#888888'
             break;
+        case 'white':
+            styles.color = '#FFFFFF'
+            break;
         default:
             styles.color = '#353535'
     }
@@ -48,13 +51,13 @@ const Text = ({ type = 'Paragraph', color = '#353535', fontFamily = 'normal', ch
         case 'Title': case 'Title1': // Ambos o mesmo tipo
             return <h1 className={$.title1} style={styles}>{children}</h1>
         case 'Title2':
-            return <h2 style={styles}>{children}</h2>
+            return <h2 className={$.title2} style={styles}>{children}</h2>
         case 'Paragraph':
-            return <p className={$.text} style={styles}>{children}</p>
+            return <p className={$.paragraph} style={styles}>{children}</p>
         case 'Subtitle':
             return <p className={$.subtitle}>{children}</p>
         default:
-            return <p className={$.text} style={styles}>{children}</p>
+            return <p className={$.paragraph} style={styles}>{children}</p>
     }
 }
 
