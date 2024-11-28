@@ -6,15 +6,14 @@ import $ from "./AcomodacaoInfo.module.sass";
 import Button from "src/components/Button/Button";
 import TitleForm from "src/components/TitleForm/TitleForm";
 import Form from "src/components/Form";
+import formatarDado from "src/hooks/mask.js";
 
 const calculaPreco = (checkIn, checkOut, setPreco, valor) => {
+  event.preventDefault();
   const start = new Date(checkIn);
   const end = new Date(checkOut);
 
-  // Calcular a diferença em milissegundos
   const diffInMs = end - start;
-
-  // Converter a diferença em dias (1 dia = 24 * 60 * 60 * 1000 ms)
   const diffInDays = diffInMs / (1000 * 60 * 60 * 24);
 
   setPreco(`${diffInDays * valor},00`);
@@ -42,8 +41,16 @@ const AcomodacaoInfo = () => {
   const [quarto, setQuarto] = useState([]);
   const [removeLoading, setremoveLoading] = useState(false);
   const [preco, setPreco] = useState("");
+
+  // Inputs
   const [checkIn, setCheckIn] = useState("");
   const [checkOut, setCheckOut] = useState("");
+
+  const [telefone, setTelefone] = useState("");
+  const [cpf, setCpf] = useState("");
+  const [cep, setCep] = useState("");
+  const [pais, setPais] = useState("");
+  const [estado, setEstado] = useState("");
 
   useEffect(() => {
     QuartoLoader(setQuarto, setremoveLoading);
@@ -60,7 +67,7 @@ const AcomodacaoInfo = () => {
             <Form.Root
               method={"post"}
               action={`/dashboard/acomodacoes/${quarto.quarto_id}`}
-              position={'relative'}
+              position={"relative"}
             >
               <div className={$.containerSimulacao}>
                 <div className={$.containerInfo}>
@@ -131,7 +138,7 @@ const AcomodacaoInfo = () => {
 
                   <div>
                     <div className={$.grid3}>
-                      <Form.Control.Root width={''} name={"check_in"}>
+                      <Form.Control.Root width={""} name={"check_in"}>
                         <Form.Control.Input
                           type={"date"}
                           onChange={({ target }) => {
@@ -181,15 +188,27 @@ const AcomodacaoInfo = () => {
               />
               <div className={$.form}>
                 <Form.Control.Root name={"nome"}>
-                  <Form.Control.Input placeholder={"Nome Completo..."}/>
+                  <Form.Control.Input placeholder={"Nome Completo..."} />
                 </Form.Control.Root>
 
                 <Form.Control.Root name={"cpf"}>
-                  <Form.Control.Input id='cpf' placeholder={"Digite seu cpf..."}/>
+                  <Form.Control.Input
+                    id="cpf"
+                    placeholder={"Digite seu cpf..."}
+                    onChange={(e) => {
+                      setCpf(formatarDado("cpf", e.target));
+                    }}
+                  />
                 </Form.Control.Root>
 
                 <Form.Control.Root name={"telefone"}>
-                  <Form.Control.Input placeholder={"Telefone..."} id={'telefone'} />
+                  <Form.Control.Input
+                    placeholder={"Telefone..."}
+                    id={"telefone"}
+                    onChange={(e) => {
+                      setTelefone(formatarDado("telefone", e.target));
+                    }}
+                  />
                 </Form.Control.Root>
                 <Form.Control.Root name={"email"}>
                   <Form.Control.Input placeholder={"Email..."} />
@@ -206,7 +225,13 @@ const AcomodacaoInfo = () => {
               />
               <div className={$.form}>
                 <Form.Control.Root name={"cep"}>
-                  <Form.Control.Input placeholder={"Digite seu Cep..."} id={'cep'}/>
+                  <Form.Control.Input
+                    placeholder={"Digite seu Cep..."}
+                    id={"cep"}
+                    onChange={(e) => {
+                      setCep(formatarDado("cep", e.target));
+                    }}
+                  />
                 </Form.Control.Root>
 
                 <Form.Control.Root name={"rua"}>
@@ -224,13 +249,37 @@ const AcomodacaoInfo = () => {
                   <Form.Control.Input placeholder={"Cidade..."} />
                 </Form.Control.Root>
                 <Form.Control.Root name={"estado"}>
-                  <Form.Control.Input placeholder={"Estado..."} id={'estado'}/>
+                  <Form.Control.Input
+                    placeholder={"Estado..."}
+                    id={"estado"}
+                    onChange={(e) => {
+                      setEstado(formatarDado("estado", e.target));
+                    }}
+                  />
                 </Form.Control.Root>
                 <Form.Control.Root name={"pais"}>
-                  <Form.Control.Input placeholder={"Pais..."} id={'pais'}/>
+                  <Form.Control.Input
+                    placeholder={"Pais..."}
+                    id={"pais"}
+                    onChange={(e) => {
+                      setPais(formatarDado("pais", e.target));
+                    }}
+                  />
                 </Form.Control.Root>
               </div>
-              <Button style={{position: 'absolute', right: 0, bottom: 0, width: '150px', height: '70px'}}> Criar </Button>
+              <Button
+                type="submit"
+                style={{
+                  position: "absolute",
+                  right: 0,
+                  bottom: 0,
+                  width: "150px",
+                  height: "70px",
+                }}
+              >
+                {" "}
+                Criar{" "}
+              </Button>
             </Form.Root>
           </>
         )}
