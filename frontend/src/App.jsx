@@ -8,11 +8,12 @@ import {
 // Hooks:
 import loginViewAction from "hooks/actions/loginViewAction";
 import criarFuncionarioAction from "hooks/actions/criarFuncionarioAction";
-import criarAcomodacaoAction from "hooks/actions/criarAcomodacaoAction";
+import criarAcomodacaoAction from "./hooks/actions/criarAcomodacaooAction";
 import loginViewLoader from "hooks/loaders/loginViewLoader";
 import dashboardLoader from "hooks/loaders/dashboardLoader";
 import visaoGeralLoader from "hooks/loaders/visaoGeralLoader";
 import listaDeHospedesLoader from "hooks/loaders/listaDeHospedesLoader";
+import criarReservaAction from "src/hooks/actions/criarReservaAction";
 
 // Componentes globais:
 import Header from "components/Header/Header";
@@ -29,6 +30,7 @@ import AcomodacaoInfo from "pages/ListaDeAcomodacoes/AcomodacaoInfo/AcomodacaoIn
 import HospedeInfo from "pages/ListaDeHospedes/HospedeInfo/HospedeInfo";
 import CriarAcomodacao from "pages/CriarAcomodacao/CriarAcomodacao";
 import CriarFuncionario from "pages/CriarFuncionario/CriarFuncionario";
+
 
 const isUserLogged = () => localStorage.getItem("user") !== undefined;
 
@@ -68,7 +70,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/acomodacoes/:acomodacaoId",
         element: <AcomodacaoInfo />,
-        action: criarAcomodacaoAction,
+        action: criarReservaAction,
       },
       {
         path: "/dashboard/hospedes",
@@ -82,6 +84,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/criarAcomodacao",
         element: <CriarAcomodacao />,
+        action: criarAcomodacaoAction,
       },
       {
         path: "/dashboard/criarFuncionario",

@@ -1,26 +1,30 @@
-import $ from './VisaoGeral.module.scss'
+import $ from "./VisaoGeral.module.scss";
 
 // Dependências:
-import { Link, useLoaderData } from 'react-router-dom';
+import { Form, Link, redirect, useLoaderData } from "react-router-dom";
 
 // Componentes:
-import Titulo from 'components/Titulo/Titulo';
-import Card from 'components/Card/Card';
-import Text from 'components/Text/Text';
-import HeadedCard from 'components/HeadedCard/HeadedCard';
-import ProgressBar from 'components/ProgressBar/ProgressBar';
-import Button from 'components/Button/Button';
+import Titulo from "components/Titulo/Titulo";
+import Card from "components/Card/Card";
+import Text from "components/Text/Text";
+import HeadedCard from "components/HeadedCard/HeadedCard";
+import ProgressBar from "components/ProgressBar/ProgressBar";
+import Button from "components/Button/Button";
+import Model from "src/components/Modal/Modal";
+import FormControlInput from "src/components/Form/FormControlInput/FormControlInput";
+import { useState } from "react";
 
 const ReservasTitle = () => {
   return (
-    <Text type='Title1' color='white' fontFamily='bold'>
+    <Text type="Title1" color="white" fontFamily="bold">
       Reservas
     </Text>
   );
-}
+};
 
 export default function VisaoGeral() {
-  const { acomodacoes } = useLoaderData()
+  const { acomodacoes } = useLoaderData();
+  const [ modal, setModal] = useState(false)
 
   return (
     <>
@@ -28,25 +32,26 @@ export default function VisaoGeral() {
       <div className={$.page_wrapper}>
         <div>
           <div className={$.top_left_wrapper}>
-            <Card orientation='horizontal' style={{ 
-              width: '30rem',
-              height: '12.5rem'
-            }}>
+            <Card
+              orientation="horizontal"
+              style={{
+                width: "30rem",
+                height: "12.5rem",
+              }}
+            >
               <section>
-                <Text type='Title1' fontFamily='black'>
+                <Text type="Title1" fontFamily="black">
                   Acomodações
                 </Text>
                 <Text>
-                  Aqui consta a quantidade de acomodações disponíveis 
-                  para hospedagem atualmente.
+                  Aqui consta a quantidade de acomodações disponíveis para
+                  hospedagem atualmente.
                 </Text>
                 <hgroup className={$.inline_text}>
-                  <Text type='GiantText' fontFamily='black'>
+                  <Text type="GiantText" fontFamily="black">
                     {acomodacoes.livre}
                   </Text>
-                  <Text type='Subtitle'>
-                    de {acomodacoes.total}
-                  </Text>
+                  <Text type="Subtitle">de {acomodacoes.total}</Text>
                 </hgroup>
               </section>
               <section className={$.block_group}>
@@ -54,19 +59,22 @@ export default function VisaoGeral() {
                 <div className={$.block_s2} />
               </section>
             </Card>
-            <Card orientation='horizontal' style={{ 
-              width: '30rem',
-              height: '12.5rem',
-              gap: '24px'
-            }}>
+            <Card
+              orientation="horizontal"
+              style={{
+                width: "30rem",
+                height: "12.5rem",
+                gap: "24px",
+              }}
+            >
               <section className={$.text_wrapper}>
                 <div>
-                  <Text type='Title1' fontFamily='black'>
+                  <Text type="Title1" fontFamily="black">
                     Lista de hóspedes
                   </Text>
                   <Text>
-                    Aqui é possível visualizar uma lista dos hóspedes e 
-                    suas informações.
+                    Aqui é possível visualizar uma lista dos hóspedes e suas
+                    informações.
                   </Text>
                 </div>
                 <Link className={$.button} to="/dashboard/hospedes">
@@ -79,60 +87,82 @@ export default function VisaoGeral() {
               </section>
             </Card>
           </div>
-          <Card orientation='horizontal' style={{ width: '100%' }}>
+          <Card orientation="horizontal" style={{ width: "100%" }}>
             <section className={$.pending_tasks}>
-              <Text type='Title1' fontFamily='black'>
+              <Text type="Title1" fontFamily="black">
                 Tarefas Pendentes
               </Text>
-              <Button> + Criar </Button>
+              <Button onClick={()=>{setModal(true)}}> + Criar </Button>
             </section>
           </Card>
         </div>
-        <HeadedCard 
-          cardStyle={{ width: '20rem', height: 'fit-content' }}
-          title={<ReservasTitle />}>
+        <HeadedCard
+          cardStyle={{ width: "20rem", height: "fit-content" }}
+          title={<ReservasTitle />}
+        >
           <ul className={$.reserves}>
             <li className={$.reserves_by_type}>
-              <Text type='Title2'>Totais:</Text>
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                <Text type='Title1'>100</Text>
+              <Text type="Title2">Totais:</Text>
+              <div style={{ display: "flex", gap: "1rem" }}>
+                <Text type="Title1">100</Text>
                 <div className={$.block_mini_blue} />
               </div>
             </li>
-            <ProgressBar color='#6474BD' progress='100' />
+            <ProgressBar color="#6474BD" progress="100" />
             <hr className={$.hr} />
 
             <li className={$.reserves_by_type}>
-              <Text type='Title2'>Confirmadas:</Text>
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                <Text type='Title1'>60</Text>
+              <Text type="Title2">Confirmadas:</Text>
+              <div style={{ display: "flex", gap: "1rem" }}>
+                <Text type="Title1">60</Text>
                 <div className={$.block_mini_green} />
               </div>
             </li>
-            <ProgressBar color='#79DDA1' progress='60' />
+            <ProgressBar color="#79DDA1" progress="60" />
             <hr className={$.hr} />
 
             <li className={$.reserves_by_type}>
-              <Text type='Title2'>Pendentes:</Text>
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                <Text type='Title1'>21</Text>
+              <Text type="Title2">Pendentes:</Text>
+              <div style={{ display: "flex", gap: "1rem" }}>
+                <Text type="Title1">21</Text>
                 <div className={$.block_mini_yellow} />
               </div>
             </li>
-            <ProgressBar color='#F8D57A' progress='21' />
+            <ProgressBar color="#F8D57A" progress="21" />
             <hr className={$.hr} />
 
             <li className={$.reserves_by_type}>
-              <Text type='Title2'>Canceladas:</Text>
-              <div style={{ display: 'flex', gap: '1rem' }}>
-                <Text type='Title1'>24</Text>
+              <Text type="Title2">Canceladas:</Text>
+              <div style={{ display: "flex", gap: "1rem" }}>
+                <Text type="Title1">24</Text>
                 <div className={$.block_mini_red} />
               </div>
             </li>
-            <ProgressBar color='#FE6D4C' progress='24' />
+            <ProgressBar color="#FE6D4C" progress="24" />
+            <hr className={$.hr} />
+
+            <li className={$.reserves_by_type}>
+              <Link className={$.button} to="/dashboard/acomodacoes">
+                Reservar
+              </Link>
+            </li>
           </ul>
         </HeadedCard>
+        {modal && (
+          <Model title={"Criar nova tarefa"} voltar={true} setModal={setModal}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <FormControlInput placeholder={"Ex: Limpeza...."} />
+              <Button style={{ width: "20px" }}>Criar</Button>
+            </div>
+          </Model>
+        )}
       </div>
     </>
-  )
+  );
 }

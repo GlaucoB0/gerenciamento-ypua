@@ -2,7 +2,7 @@
 import axios from "axios";
 import { redirect } from "react-router-dom";
 
-async function criarAcomodacaoAction({ request }) {
+async function criarReservaAction({ request }) {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;
   const formData = await request.formData();
   const token = localStorage.getItem("user");
@@ -56,4 +56,4 @@ async function criarAcomodacaoAction({ request }) {
   }
 }
 
-export default criarAcomodacaoAction;
+export default criarReservaAction;
