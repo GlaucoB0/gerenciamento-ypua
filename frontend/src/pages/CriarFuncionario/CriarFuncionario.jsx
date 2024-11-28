@@ -3,8 +3,13 @@ import Titulo from "src/components/Titulo/Titulo";
 import $ from "./CriarFuncionario.module.sass";
 import TitleForm from "src/components/TitleForm/TitleForm";
 import Button from "src/components/Button/Button";
+import formatarDado from "src/hooks/mask.js";
+import { useState } from "react";
 
 const CriarFuncionario = () => {
+
+    const [cpf, setCpf] = useState('')
+
     return (
         <>
             <Titulo links={["Criar Funcionário"]} />
@@ -22,7 +27,7 @@ const CriarFuncionario = () => {
 
                         <Form.Control.Root name={"cpf"} label={"Cpf do Funcionário"}>
                             <Form.Control.Label />
-                            <Form.Control.Input placeholder={"Cpf do Funcionário"} />
+                            <Form.Control.Input placeholder={"Cpf do Funcionário"} onChange={({target})=>{setCpf(formatarDado('cpf', target))}}/>
                         </Form.Control.Root>
 
 
