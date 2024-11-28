@@ -1,36 +1,50 @@
 // Dependências:
-import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  Navigate,
+  RouterProvider,
+} from "react-router-dom";
 
 // Hooks:
-import loginViewAction from 'hooks/actions/loginViewAction'
-import loginViewLoader from 'hooks/loaders/loginViewLoader'
-import dashboardLoader from 'hooks/loaders/dashboardLoader'
+import loginViewAction from 'hooks/actions/loginViewAction';
+import criarFuncionarioAction from 'hooks/actions/criarFuncionarioAction';
+import criarAcomodacaoAction from 'hooks/actions/criarAcomodacaoAction';
+import loginViewLoader from 'hooks/loaders/loginViewLoader';
+import dashboardLoader from 'hooks/loaders/dashboardLoader';
 import visaoGeralLoader from 'hooks/loaders/visaoGeralLoader'
 
 // Componentes globais:
 import Header from 'components/Header/Header'
 
-// Views e páginas:
+// Views:
 import Login from 'views/Login/Login'
 import Dashboard from 'views/Dashboard/Dashboard'
+
+// Páginas:
 import VisaoGeral from 'pages/VisaoGeral/VisaoGeral'
 import ListaDeHospedes from 'pages/ListaDeHospedes/ListaDeHospedes'
 import ListaDeAcomodacoes from 'pages/ListaDeAcomodacoes/ListaDeAcomodacoes'
+import AcomodacaoInfo from 'pages/ListaDeAcomodacoes/AcomodacaoInfo/AcomodacaoInfo'
+import HospedeInfo from 'pages/ListaDeHospedes/HospedeInfo/HospedeInfo'
+import CriarAcomodacao from 'pages/CriarAcomodacao/CriarAcomodacao'
+import CriarFuncionario from 'pages/CriarFuncionario/CriarFuncionario'
 
-const isUserLogged = () => localStorage.getItem("user") !== undefined
+const isUserLogged = () => localStorage.getItem("user") !== undefined;
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: isUserLogged 
-      ? <Navigate to="/dashboard" /> // <- Caso esteja logado
-      : <Navigate to="/login" />     // <- Caso não esteja logado
+    element: isUserLogged ? (
+      <Navigate to="/dashboard" /> // <- Caso esteja logado
+    ) : (
+      <Navigate to="/login" /> // <- Caso não esteja logado
+    ), 
   },
   {
     path: "/login",
     element: <Login />,
     loader: loginViewLoader,
-    action: loginViewAction
+    action: loginViewAction,
   },
   {
     path: "/dashboard",
@@ -48,26 +62,32 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/acomodacoes",
-        element: <ListaDeAcomodacoes/>
+        element: <ListaDeAcomodacoes />,
       },
       {
-        path: "/dashboard/acomodacoes/acomodacao/:acomodacaoId",
+        path: "/dashboard/acomodacoes/:acomodacaoId",
+        element: <AcomodacaoInfo />,
+        action: criarAcomodacaoAction,
       },
       {
         path: "/dashboard/hospedes",
-        element: <ListaDeHospedes />
+        element: <ListaDeHospedes />,
       },
       {
-        path: "/dashboard/hospedes/hospede/:hospedeId",
+        path: "/dashboard/hospedes/:hospedeId",
+        element: <HospedeInfo />,
       },
       {
         path: "/dashboard/criarAcomodacao",
+        element: <CriarAcomodacao/>
       },
       {
         path: "/dashboard/criarFuncionario",
+        element: <CriarFuncionario />,
+        action: criarFuncionarioAction,
       },
-    ]
-  }
+    ],
+  },
 ]);
 
 const App = () => {
@@ -76,7 +96,7 @@ const App = () => {
       <Header title="Gerenciamento" />
       <RouterProvider router={router} />
     </>
-  )
-}
+  );
+};
 
 export default App;

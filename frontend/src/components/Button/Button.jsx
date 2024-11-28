@@ -1,13 +1,13 @@
 import $ from './Button.module.sass'
 
-const Button = ({isEnabled = true, onClick, children}) => {
+const Button = (props) => {
   return (
     <button
       className={$.button}
       type="button" 
-      disabled={!isEnabled}
-      onClick={onClick}>
-      {children}
+      style={{ height: props.height }}
+      {...props}>
+      {props.children}
     </button>
   )
 }

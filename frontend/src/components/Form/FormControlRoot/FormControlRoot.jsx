@@ -1,5 +1,5 @@
 import $ from './FormControlRoot.module.sass'
-import FormControlContext from 'src/hooks/contexts/FormControlContext'
+import FormControlContext from 'hooks/contexts/FormControlContext'
 
 const FormControlRoot = ({ name, label, children }) => {
   return (
