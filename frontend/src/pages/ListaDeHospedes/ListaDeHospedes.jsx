@@ -1,60 +1,51 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import Card from "src/components/Card/Card";
-import Hospede from "src/components/Hospede";
-import Model from "src/components/Model/Model";
-import Text from "src/components/Text/Text";
-import Titulo from "src/components/Titulo/Titulo";
+// Folha de estilos:
 import $ from "./ListaDeHospedes.module.sass";
 
-const ListaDeHospedesLoader = (setter) => {
-  const baseUrl = import.meta.env.VITE_API_BASE_URL;
-  console.log(baseUrl);
-  axios
-    .get(baseUrl + "/clientes/listarClientes")
-    .then((response) => {
-      console.log(response.data);
-      setter(response.data);
-    })
-    .catch((error) => {
-      console.log(error);
-      if (error.response.status !== 404) {
-        throw new Error(error);
-      }
-    });
-};
+// Dependências e módulos:
+import { Suspense, useState } from "react";
+import { useLoaderData } from "react-router-dom";
+import deleteReserva from 'src/hooks/tasks/deleteReserva';
 
-const deleteReserva = async (id, setModel) => {
-  const baseUrl = import.meta.env.VITE_API_BASE_URL;
-  try {
-    await axios.delete(`${baseUrl}/clientes/deleteById/${id}`);
+// Componentes:
+import Hospede from "components/Hospede";
+import Modal from "components/Modal/Modal";
+import Titulo from "components/Titulo/Titulo";
+import Button from "components/Button/Button";
 
-    setModel(true)
-    
-  } catch (error) {
-    console.error(error);
-    return;
-  }
-};
+const DeletionModal = ({ onCancel, onDelete }) => {
+  return (
+    <Modal 
+      title="Remover reserva"
+      text="Deseja realmente remover essa reserva? Essa escolha é permanente.">
+      <Button 
+        height="50px"
+        className={$.custom_modal_btn} 
+        onClick={onCancel}>
+        Cancelar
+      </Button>
+      <Button height="50px" onClick={onDelete}>
+        Remover
+      </Button>
+    </Modal>
+  )
+}
 
-const handleDelete = (id, setModel) => {
-  deleteReserva(id, setModel);
-};
-
-const ListaDeHospedes = () => {
-  const [lista, setLista] = useState([]);
+export default function ListaDeHospedes() {
+  const lista = useLoaderData();
   const [model, setModel] = useState(false);
 
-  useEffect(() => {
-    ListaDeHospedesLoader(setLista);
-  }, []);
+  const handleDelete = async (id) => {
+    await deleteReserva(id)
+    window.location.reload()
+    setModel(false)
+  }
+
   return (
     <>
       <Titulo links={["Lista de Hospedes"]} />
-      <div className={$.list}>
-        {lista.length > 0 &&
-          lista.map((a) => {
-            return (
+        <ul className={$.list}>
+          {lista.map((a, i) => (
+            <li key={i}>
               <Hospede.Root>
                 <Hospede.Informacao
                   titulo={"Identificador"}
@@ -70,18 +61,14 @@ const ListaDeHospedes = () => {
                   titulo={"Realizado em"}
                   data={a.data_reserva.split("T")[0]}
                 />
-                <Hospede.Button
-                  onClick={() => {
-                    handleDelete(a.reserva_id, setModel);
-                  }}
-                />
-                {model && <Model text={'Tarefa Deletada!'} setModel={setModel}/>}
+                <Hospede.Button onClick={() => setModel(true)} />
+                {model && (
+                  <DeletionModal onCancel={() => setModel(false)} onDelete={() => handleDelete(a.reserva_id)} />
+                )}
               </Hospede.Root>
-            );
-          })}
-      </div>
+            </li>
+          ))}
+        </ul>
     </>
   );
 };
-
-export default ListaDeHospedes;

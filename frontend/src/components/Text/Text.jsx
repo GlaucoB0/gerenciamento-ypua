@@ -16,6 +16,9 @@ function getStyles(color, fontFamily) {
     case "dark-gray":
       styles.color = "#4C4C4C";
       break;
+    case 'white':
+        styles.color = '#FFFFFF'
+        break;
     default:
       styles.color = "#353535";
   }
@@ -75,7 +78,7 @@ const Text = ({
       return <h2 style={styles}>{children}</h2>;
     case "Paragraph":
       return (
-        <p className={$.text} style={styles}>
+        <p className={$.paragraph} style={styles}>
           {children}
         </p>
       );
@@ -83,7 +86,7 @@ const Text = ({
       return <p className={$.subtitle}>{children}</p>;
     default:
       return (
-        <p className={$.text} style={styles}>
+        <p className={$.paragraph} style={styles}>
           {children}
         </p>
       );

@@ -93,11 +93,9 @@ const CriarAcomodacao = () => {
               right: "50px",
               bottom: "30px",
               width: "150px",
-              height: "70px",
             }}
           >
-            {" "}
-            Criar{" "}
+            Criar
           </Button>
         </Form.Root>
       </div>

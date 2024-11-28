@@ -1,11 +1,17 @@
-@use 'styles/variables' as vs
+@use 'styles/elements' as el
 
 .button
-    border-radius: 10px
-    width: 100%
-    color: #fff
-    background-color: vs.$colors-red
-    border: none
-    cursor: pointer
-    &:hover
-        background-color: vs.$colors-red-075
+  @include el.button($margin-block: 0)
+
+// CÓDIGO ANTERIOR (caso necessário):
+// @use 'styles/variables' as vs
+
+// .button
+//   border-radius: 10px
+//   width: 100%
+//   color: #fff
+//   background-color: vs.$colors-red
+//   border: none
+//   cursor: pointer
+//   &:hover
+//       background-color: vs.$colors-red-075

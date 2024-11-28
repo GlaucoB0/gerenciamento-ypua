@@ -2,26 +2,35 @@
     
 .containerModel
     position: fixed
-    width: 500px
-    height: 130px
     display: flex
     flex-direction: column
     align-items: center
-    justify-content: space-between
-    background-color: white
+    z-index: 1000
+    
+    padding: 2rem 4rem
+    gap: 15px
+    max-width: 500px
+    max-width: 500px
+    border-radius: 10px
+    
+    background-color: vs.$colors-white
     box-shadow: vs.$shadow-black-005
+    
     top:20%
     left:50%
     transform: translate(-50%, -50%)
-    border-radius: 10px
-    padding: 20px
-    gap: 15px
-    z-index: 1000
-    button
-        width: 150px
-        position: absolute
-        bottom: 20px
-        right: 20px
+
+    p
+        text-align: center
+        font-size: vs.$text-size-large
+
+    div
+        display: flex
+        flex-direction: row
+        gap: 1rem
+
+        button
+            min-width: 150px
 
 .overlay
     position: fixed
