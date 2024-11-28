@@ -181,15 +181,15 @@ const AcomodacaoInfo = () => {
               />
               <div className={$.form}>
                 <Form.Control.Root name={"nome"}>
-                  <Form.Control.Input placeholder={"Nome Completo..."} />
+                  <Form.Control.Input placeholder={"Nome Completo..."}/>
                 </Form.Control.Root>
 
                 <Form.Control.Root name={"cpf"}>
-                  <Form.Control.Input placeholder={"Digite seu cpf..."} />
+                  <Form.Control.Input id='cpf' placeholder={"Digite seu cpf..."}/>
                 </Form.Control.Root>
 
                 <Form.Control.Root name={"telefone"}>
-                  <Form.Control.Input placeholder={"Telefone..."} />
+                  <Form.Control.Input placeholder={"Telefone..."} id={'telefone'} />
                 </Form.Control.Root>
                 <Form.Control.Root name={"email"}>
                   <Form.Control.Input placeholder={"Email..."} />
@@ -206,7 +206,7 @@ const AcomodacaoInfo = () => {
               />
               <div className={$.form}>
                 <Form.Control.Root name={"cep"}>
-                  <Form.Control.Input placeholder={"Digite seu Cep..."} />
+                  <Form.Control.Input placeholder={"Digite seu Cep..."} id={'cep'}/>
                 </Form.Control.Root>
 
                 <Form.Control.Root name={"rua"}>
@@ -224,10 +224,10 @@ const AcomodacaoInfo = () => {
                   <Form.Control.Input placeholder={"Cidade..."} />
                 </Form.Control.Root>
                 <Form.Control.Root name={"estado"}>
-                  <Form.Control.Input placeholder={"Estado..."} />
+                  <Form.Control.Input placeholder={"Estado..."} id={'estado'}/>
                 </Form.Control.Root>
                 <Form.Control.Root name={"pais"}>
-                  <Form.Control.Input placeholder={"Pais..."} />
+                  <Form.Control.Input placeholder={"Pais..."} id={'pais'}/>
                 </Form.Control.Root>
               </div>
               <Button style={{position: 'absolute', right: 0, bottom: 0, width: '150px', height: '70px'}}> Criar </Button>
