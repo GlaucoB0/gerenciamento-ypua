@@ -7,6 +7,6 @@ const router = Router();
 router.post('/criarQuartos', verifyAdmin ,criarQuartos);
 router.get('/listarQuartos/:query', listarQuartos);
 router.get('/listarQuarto/:id', listOneRoom)
-router.delete('/deleteQuarto/:id',deleteRoom ,verifyAdmin)
+router.delete('/deletarQuarto/:id', verifyAdmin, deleteRoom)
 
 export default router;
