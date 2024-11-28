@@ -68,3 +68,7 @@ export const listRoom = async (id:string) => {
     quarto.acomoda = (quarto.cama_casais*2 + quarto.camas_solteiros)
     return quarto
 }
+
+export const deleteRoomService = async (id:string) => {
+    return prisma.quarto.delete({where: {quarto_id: id}});
+}
