@@ -7,10 +7,11 @@ import { Link, useLoaderData } from 'react-router-dom';
 import Card from 'components/Card/Card'
 import Text from 'components/Text/Text';
 import HeadedCard from 'src/components/HeadedCard/HeadedCard';
+import ProgressBar from 'src/components/ProgressBar/ProgressBar';
 
 const ReservasTitle = () => {
   return (
-    <Text type='Title2' color='white' fontFamily='black'>
+    <Text type='Title1' color='white' fontFamily='bold'>
       Reservas
     </Text>
   );
@@ -49,7 +50,8 @@ export default function VisaoGeral() {
       </Card>
       <Card orientation='horizontal' style={{ 
         width: '30rem',
-        height: '12.5rem'
+        height: '12.5rem',
+        gap: '24px'
       }}>
         <section className={$.text_wrapper}>
           <div>
@@ -81,33 +83,37 @@ export default function VisaoGeral() {
               <div className={$.block_mini_blue} />
             </div>
           </li>
+          <ProgressBar color='#6474BD' progress='100' />
           <hr className={$.hr} />
 
           <li className={$.reserves_by_type}>
             <Text type='Title2'>Confirmadas:</Text>
             <div style={{ display: 'flex', gap: '1rem' }}>
-              <Text type='Title1'>100</Text>
+              <Text type='Title1'>60</Text>
               <div className={$.block_mini_green} />
             </div>
           </li>
+          <ProgressBar color='#79DDA1' progress='60' />
           <hr className={$.hr} />
 
           <li className={$.reserves_by_type}>
             <Text type='Title2'>Pendentes:</Text>
             <div style={{ display: 'flex', gap: '1rem' }}>
-              <Text type='Title1'>100</Text>
+              <Text type='Title1'>21</Text>
               <div className={$.block_mini_yellow} />
             </div>
           </li>
+          <ProgressBar color='#F8D57A' progress='21' />
           <hr className={$.hr} />
 
           <li className={$.reserves_by_type}>
             <Text type='Title2'>Canceladas:</Text>
             <div style={{ display: 'flex', gap: '1rem' }}>
-              <Text type='Title1'>100</Text>
+              <Text type='Title1'>24</Text>
               <div className={$.block_mini_red} />
             </div>
           </li>
+          <ProgressBar color='#FE6D4C' progress='24' />
         </ul>
       </HeadedCard>
     </div>
