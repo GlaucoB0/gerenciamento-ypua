@@ -1,14 +1,15 @@
 @use 'styles/variables' as vs
 @use 'styles/elements' as el
 
-.aside, .main
-  display: inline-block
-  vertical-align: top
+.root
+  display: flex
+  flex-direction: row
+  margin-inline: 4rem
+  gap: 2rem
 
 .aside
   height: 84vh
   flex-direction: row
-  margin: 0 2rem 1rem 4rem
 
 .custom_btn
   @include el.button($margin-block: 0, $background-color: vs.$colors-transparent, $color: vs.$colors-red)

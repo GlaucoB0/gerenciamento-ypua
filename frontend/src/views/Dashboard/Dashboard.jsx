@@ -42,7 +42,7 @@ export default function Dashboard() {
   }
 
   return (
-    <>
+    <div className={$.root}>
       {show && (
         <ExitModal onExit={handleExit} onCancel={() => setShow(false)} />
       )}
@@ -77,6 +77,6 @@ export default function Dashboard() {
       <main className={$.main}>
         <Outlet />
       </main>
-    </>
+    </div>
   )
 }
