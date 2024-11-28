@@ -9,14 +9,15 @@
   color: vs.$colors-gray;
 }
 
-.page_grid {
-  display: grid;
+.page_wrapper {
+  display: flex;
   width: fit-content;
-  gap: 1rem;
-  grid-template-areas: 
-    'header header menu menu right right'
-    'main main main main right right'
-    'footer footer footer footer footer footer';
+  gap: 20px;
+}
+.top_left_wrapper {
+  display: flex;
+  margin-bottom: 20px;
+  gap: 20px;
 }
 
 .inline_text {
@@ -100,5 +101,16 @@
 
   h2 {
     line-height: 24px;
+  }
+}
+
+.pending_tasks {
+  display: inherit;
+  align-items: center;
+  gap: 1.5rem;
+
+  button {
+    width: fit-content;
+    background-color: vs.$colors-yellow;
   }
 }

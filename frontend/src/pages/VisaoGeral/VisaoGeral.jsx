@@ -4,11 +4,12 @@ import $ from './VisaoGeral.module.scss'
 import { Link, useLoaderData } from 'react-router-dom';
 
 // Componentes:
-import Titulo from 'components/Titulo/Titulo'
-import Card from 'components/Card/Card'
+import Titulo from 'components/Titulo/Titulo';
+import Card from 'components/Card/Card';
 import Text from 'components/Text/Text';
-import HeadedCard from 'src/components/HeadedCard/HeadedCard';
-import ProgressBar from 'src/components/ProgressBar/ProgressBar';
+import HeadedCard from 'components/HeadedCard/HeadedCard';
+import ProgressBar from 'components/ProgressBar/ProgressBar';
+import Button from 'components/Button/Button';
 
 const ReservasTitle = () => {
   return (
@@ -24,57 +25,69 @@ export default function VisaoGeral() {
   return (
     <>
       <Titulo links={["Visão Geral"]} />
-      <div className={$.page_grid}>
-        <Card orientation='horizontal' style={{ 
-          width: '30rem',
-          height: '12.5rem'
-        }}>
-          <section>
-            <Text type='Title1' fontFamily='black'>
-              Acomodações
-            </Text>
-            <Text>
-              Aqui consta a quantidade de acomodações disponíveis 
-              para hospedagem atualmente.
-            </Text>
-            <hgroup className={$.inline_text}>
-              <Text type='GiantText' fontFamily='black'>
-                {acomodacoes.livre}
-              </Text>
-              <Text type='Subtitle'>
-                de {acomodacoes.total}
-              </Text>
-            </hgroup>
-          </section>
-          <section className={$.block_group}>
-            <div className={$.block_s1} />
-            <div className={$.block_s2} />
-          </section>
-        </Card>
-        <Card orientation='horizontal' style={{ 
-          width: '30rem',
-          height: '12.5rem',
-          gap: '24px'
-        }}>
-          <section className={$.text_wrapper}>
-            <div>
+      <div className={$.page_wrapper}>
+        <div>
+          <div className={$.top_left_wrapper}>
+            <Card orientation='horizontal' style={{ 
+              width: '30rem',
+              height: '12.5rem'
+            }}>
+              <section>
+                <Text type='Title1' fontFamily='black'>
+                  Acomodações
+                </Text>
+                <Text>
+                  Aqui consta a quantidade de acomodações disponíveis 
+                  para hospedagem atualmente.
+                </Text>
+                <hgroup className={$.inline_text}>
+                  <Text type='GiantText' fontFamily='black'>
+                    {acomodacoes.livre}
+                  </Text>
+                  <Text type='Subtitle'>
+                    de {acomodacoes.total}
+                  </Text>
+                </hgroup>
+              </section>
+              <section className={$.block_group}>
+                <div className={$.block_s1} />
+                <div className={$.block_s2} />
+              </section>
+            </Card>
+            <Card orientation='horizontal' style={{ 
+              width: '30rem',
+              height: '12.5rem',
+              gap: '24px'
+            }}>
+              <section className={$.text_wrapper}>
+                <div>
+                  <Text type='Title1' fontFamily='black'>
+                    Lista de hóspedes
+                  </Text>
+                  <Text>
+                    Aqui é possível visualizar uma lista dos hóspedes e 
+                    suas informações.
+                  </Text>
+                </div>
+                <Link className={$.button} to="/dashboard/hospedes">
+                  Visualizar
+                </Link>
+              </section>
+              <section className={$.block_group}>
+                <div className={$.block_s1} />
+                <div className={$.block_s2} />
+              </section>
+            </Card>
+          </div>
+          <Card orientation='horizontal' style={{ width: '100%' }}>
+            <section className={$.pending_tasks}>
               <Text type='Title1' fontFamily='black'>
-                Lista de hóspedes
+                Tarefas Pendentes
               </Text>
-              <Text>
-                Aqui é possível visualizar uma lista dos hóspedes e 
-                suas informações.
-              </Text>
-            </div>
-            <Link className={$.button} to="/dashboard/hospedes">
-              Visualizar
-            </Link>
-          </section>
-          <section className={$.block_group}>
-            <div className={$.block_s1} />
-            <div className={$.block_s2} />
-          </section>
-        </Card>
+              <Button> + Criar </Button>
+            </section>
+          </Card>
+        </div>
         <HeadedCard 
           cardStyle={{ width: '20rem', height: 'fit-content' }}
           title={<ReservasTitle />}>
