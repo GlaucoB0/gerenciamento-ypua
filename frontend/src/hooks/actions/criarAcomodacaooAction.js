@@ -19,6 +19,7 @@ async function criarAcomodacaoAction({ request }) {
     qtda_banheiros: Number(formData.get("qtda_banheiros")) || 0,
     preco: Number(formData.get("preco")),
     image: formData.get("image"),
+    disponivel: true,
     amenidades: {
       tv: verificaOn(formData.get("tv")),
       arCondicionado: verificaOn(formData.get("arCondicionado")),
@@ -34,7 +35,7 @@ async function criarAcomodacaoAction({ request }) {
 
   try {
     const response = await axios.post(
-      `${baseUrl}/quartos/criarQuarto`,
+      `${baseUrl}/quartos/criarQuartos`,
       submission,
       { headers: { Authorization: token } }
     );
