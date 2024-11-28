@@ -6,12 +6,13 @@ import {
 } from "react-router-dom";
 
 // Hooks:
-import loginViewAction from 'hooks/actions/loginViewAction';
-import criarFuncionarioAction from 'hooks/actions/criarFuncionarioAction';
-import criarAcomodacaoAction from 'hooks/actions/criarAcomodacaoAction';
-import loginViewLoader from 'hooks/loaders/loginViewLoader';
-import dashboardLoader from 'hooks/loaders/dashboardLoader';
+import loginViewAction from 'hooks/actions/loginViewAction'
+import criarFuncionarioAction from 'hooks/actions/criarFuncionarioAction'
+import criarAcomodacaoAction from 'hooks/actions/criarAcomodacaoAction'
+import loginViewLoader from 'hooks/loaders/loginViewLoader'
+import dashboardLoader from 'hooks/loaders/dashboardLoader'
 import visaoGeralLoader from 'hooks/loaders/visaoGeralLoader'
+import listaDeHospedesLoader from 'hooks/loaders/listaDeHospedesLoader'
 
 // Componentes globais:
 import Header from 'components/Header/Header'
@@ -72,6 +73,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/hospedes",
         element: <ListaDeHospedes />,
+        loader: listaDeHospedesLoader
       },
       {
         path: "/dashboard/hospedes/:hospedeId",
