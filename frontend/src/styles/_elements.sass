@@ -1,9 +1,11 @@
 @use 'styles/variables' as vs
 @use 'sass:color'
 
-@mixin button($margin-block: 1rem 0.5rem, $background-color: vs.$colors-red)
+@mixin button($margin-block: 1rem 0.5rem, $background-color: vs.$colors-red, $color: vs.$colors-white)
   display: inline-flex
   justify-content: center
+  align-items: center
+  
   margin-block: $margin-block
   padding: 1rem
   gap: 1rem
@@ -13,7 +15,7 @@
   border-radius: 10px
 
   background-color: $background-color
-  color: vs.$colors-white
+  color: $color
 
   font-size: vs.$text-size-large
 
