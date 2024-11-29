@@ -1,0 +1,23 @@
+@use 'styles/elements' as el
+@use 'styles/variables' as vs
+.button
+  @include el.button($margin-block: 0)
+
+// CÓDIGO ANTERIOR (caso necessário):
+
+
+.buttonGray
+  border-radius: 10px
+  width: 100%
+  color: vs.$colors-gray
+  border: 5px solid vs.$colors-gray
+  cursor: pointer
+  
+
+.buttonYellow
+  border-radius: 10px
+  width: 100%
+  color: #fff
+  background-color: #D2AE6C
+  border: none
+  cursor: pointer

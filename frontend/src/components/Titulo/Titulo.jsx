@@ -1,6 +1,7 @@
 import React from "react";
 import Text from "../Text/Text";
 import $ from './Titulo.module.sass'
+import Seta from '../../assets/images/icon-seta.png'
 
 const Titulo = ({ links }) => {
   return (
@@ -9,8 +10,8 @@ const Titulo = ({ links }) => {
       {links.map((a) => {
         return (
           <>
-            <Text type="Subtitle">{">"}</Text>
-            <Text type="Subtitle">{a}</Text>
+            <img src={Seta} alt="" />
+            <Text color="gray">{a}</Text>
           </>
         );
       })}

@@ -1,0 +1,32 @@
+@use 'styles/variables' as vs
+
+.card
+  header
+    display: flex
+    justify-content: center
+    text-align: center
+    
+    padding: 1rem
+    border-radius: 10px 10px 0 0
+    
+    color: vs.$colors-white
+    background-color: vs.$colors-red
+
+%div
+  display: flex
+  justify-content: space-between
+  align-items: center
+  
+  padding: 2rem 0
+  border-radius: 0 0 10px 10px
+  
+  background-color: vs.$colors-white
+  box-shadow: vs.$shadow-black-005
+
+.div_horizontal
+  @extend %div
+  flex-direction: row
+
+.div_vertical 
+  @extend %div
+  flex-direction: column

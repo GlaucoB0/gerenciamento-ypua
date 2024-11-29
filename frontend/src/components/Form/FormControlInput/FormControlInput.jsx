@@ -1,35 +1,46 @@
-import $ from './FormControlInput.module.sass'
-import { useContext, useState } from 'react'
-import FormControlContext from 'hooks/contexts/FormControlContext';
+import styled from "./FormControlInput.module.sass";
+import { useContext, useState } from "react";
+import FormControlContext from "hooks/contexts/FormControlContext";
 
-const FormControlInput = ({type: givenType, placeholder, iconSrc}) => {
-  const {name, label} = useContext(FormControlContext)
-  const [currentType, setCurrentType] = useState(givenType)
+const FormControlInput = ({
+  id,
+  type: givenType,
+  placeholder,
+  iconSrc,
+  onChange,
+  width = "100%",
+}) => {
+  const { name, label } = useContext(FormControlContext);
+  const [currentType, setCurrentType] = useState(givenType);
 
-  let imgVariableStyle = givenType === 'password' ? { cursor: 'pointer' } : {}
+  let imgVariableStyle = givenType === "password" ? { cursor: "pointer" } : {};
 
   const handleImgClick = () => {
-    if (givenType === 'password') {
-      setCurrentType(currentType === 'password' ? 'input' : 'password')
+    if (givenType === "password") {
+      setCurrentType(currentType === "password" ? "input" : "password");
     }
-  }
+  };
 
   return (
-    <div className={$.input_wrapper}>
-      <img 
-        className={$.icon}
+    <div className={styled.input_wrapper} style={{ width }}>
+      <img
+        className={styled.icon}
         src={iconSrc}
-        alt={`Ícone do campo ${label || 'de entrada'}`}
+        alt={iconSrc && `Ícone do campo style{label || "de entrada"}`}
         draggable={false}
         onClick={handleImgClick}
-        style={imgVariableStyle} />
-      <input 
-        className={$.input}
-        type={currentType} 
-        name={name} 
-        placeholder={placeholder} />
+        style={imgVariableStyle}
+      />
+      <input
+        id={id}
+        onChange={onChange}
+        className={styled.input}
+        type={currentType}
+        name={name}
+        placeholder={placeholder}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default FormControlInput
+export default FormControlInput;

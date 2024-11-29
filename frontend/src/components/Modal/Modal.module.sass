@@ -1,0 +1,46 @@
+@use 'styles/variables' as vs
+.icon
+    position: absolute
+    top: 20px
+    left: 20px
+    cursor: pointer
+
+.containerModel
+    position: fixed
+    display: flex
+    flex-direction: column
+    align-items: center
+    z-index: 1000
+    
+    padding: 2rem 7rem
+    gap: 15px
+    border-radius: 10px
+    
+    background-color: vs.$colors-white
+    box-shadow: vs.$shadow-black-005
+    
+    top:20%
+    left:50%
+    transform: translate(-50%, -50%)
+
+    p
+        text-align: center
+        font-size: vs.$text-size-large
+
+    div
+        display: flex
+        flex-direction: row
+        gap: 1rem
+
+        button
+            min-width: 150px
+
+.overlay
+    position: fixed
+    top: 0
+    left: 0
+    height: 100vh
+    width: 100vw
+    background-color: #000
+    opacity: 0.7
+    z-index: 999
