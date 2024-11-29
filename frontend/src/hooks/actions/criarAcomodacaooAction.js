@@ -8,9 +8,9 @@ async function criarAcomodacaoAction({ request }) {
   const token = localStorage.getItem("user");
 
   const verificaOn = (value) => {
-    if(value == 'on') return true
-    return false
-  }
+    if (value == "on") return true;
+    return false;
+  };
   const submission = {
     nome: formData.get("nome"),
     descricao: "Sem descrição.",
@@ -29,9 +29,10 @@ async function criarAcomodacaoAction({ request }) {
       wifi: verificaOn(formData.get("wifi")),
       geladeira: verificaOn(formData.get("geladeira")),
       ducha: verificaOn(formData.get("ducha")),
-    }
+    },
   };
-  console.log(submission);
+  console.log("")
+  
 
   try {
     const response = await axios.post(
@@ -40,7 +41,7 @@ async function criarAcomodacaoAction({ request }) {
       { headers: { Authorization: token } }
     );
 
-    return redirect('/dashboard/acomodacoes')
+    return redirect("/dashboard/acomodacoes");
   } catch (error) {
     console.log(error);
     return "null";

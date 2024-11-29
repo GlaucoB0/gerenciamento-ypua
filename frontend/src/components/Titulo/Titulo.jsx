@@ -1,7 +1,7 @@
 import React from "react";
 import Text from "../Text/Text";
 import $ from './Titulo.module.sass'
-import Seta from '../../assets/images/icon-seta.svg'
+import Seta from '../../assets/images/icon-seta.png'
 
 const Titulo = ({ links }) => {
   return (
@@ -11,7 +11,7 @@ const Titulo = ({ links }) => {
         return (
           <>
             <img src={Seta} alt="" />
-            <Text color="light-gray">{a}</Text>
+            <Text color="gray">{a}</Text>
           </>
         );
       })}

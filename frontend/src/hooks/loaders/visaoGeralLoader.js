@@ -6,9 +6,12 @@ async function visaoGeralLoader() {
   try {
     const { data: accommList } = await axios
       .get(`${baseUrl}/quartos/listarQuartos/list`)
+    const response = await axios
+      .get(`${baseUrl}/clientes/listarClientes`)
     const freeAccomms = accommList.map((room) => room.disponivel === true)
 
     return {
+      reservas: response.data,
       acomodacoes: {
         total: String(accommList.length).padStart(2, '0'),
         livre: String(freeAccomms.length).padStart(2, '0')

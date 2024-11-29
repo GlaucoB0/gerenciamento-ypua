@@ -51,6 +51,7 @@ const Text = ({
   color = "#353535",
   fontFamily = "normal",
   children,
+  style
 }) => {
   let styles = getStyles(color, fontFamily);
 
@@ -76,6 +77,8 @@ const Text = ({
       );
     case "Title2":
       return <h2 style={styles}>{children}</h2>;
+    case "Title3":
+      return <h2 style={{...styles, ...style}}>{children}</h2>;
     case "Paragraph":
       return (
         <p className={$.paragraph} style={styles}>

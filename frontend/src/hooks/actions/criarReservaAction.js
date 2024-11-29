@@ -11,6 +11,7 @@ async function criarReservaAction({ request }) {
     headers: { Authorization: token },
   });
 
+
   console.log(token);
   let today = new Date();
   console.log(today);

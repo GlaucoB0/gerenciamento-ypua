@@ -11,6 +11,8 @@ import Hospede from "components/Hospede";
 import Modal from "components/Modal/Modal";
 import Titulo from "components/Titulo/Titulo";
 import Button from "components/Button/Button";
+import Filtros from "src/components/Filtrar";
+import Text from "src/components/Text/Text";
 
 const DeletionModal = ({ onCancel, onDelete }) => {
   return (
@@ -41,6 +43,16 @@ export default function ListaDeHospedes() {
   return (
     <>
       <Titulo links={["Lista de Hospedes"]} />
+      <div style={{ display: "flex", gap: "10px" }}>
+        <Filtros.Root value={lista} color={"red"}>
+          <Filtros.Img img={"icon-casa-simple.png"} />
+          <Text color="white">Criar</Text>
+        </Filtros.Root>
+        <Filtros.Root value={lista} color={"gray"}>
+          <Filtros.Img img={"icon-verify.png"} />
+          <Text color="gray" fontFamily="bold">Disponiveis</Text>
+        </Filtros.Root>
+      </div>
       <ul className={$.list}>
         {lista.map((a, i) => (
           <li key={i}>

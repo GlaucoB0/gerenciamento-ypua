@@ -105,12 +105,17 @@
 }
 
 .pending_tasks {
-  display: inherit;
+  display: flex;
   align-items: center;
   gap: 1.5rem;
+  margin-bottom: 10px;
 
   button {
     width: fit-content;
     background-color: vs.$colors-yellow;
   }
+}
+.custom_modal_btn{
+    @include el.button($margin-block: 0, $background-color: vs.$colors-transparent, $color: vs.$colors-red);
+    border: 1px solid vs.$colors-red;
 }

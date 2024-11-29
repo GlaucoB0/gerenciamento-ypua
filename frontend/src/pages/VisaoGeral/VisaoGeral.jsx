@@ -12,7 +12,8 @@ import ProgressBar from "components/ProgressBar/ProgressBar";
 import Button from "components/Button/Button";
 import Model from "src/components/Modal/Modal";
 import FormControlInput from "src/components/Form/FormControlInput/FormControlInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const ReservasTitle = () => {
   return (
@@ -23,8 +24,61 @@ const ReservasTitle = () => {
 };
 
 export default function VisaoGeral() {
-  const { acomodacoes } = useLoaderData();
-  const [ modal, setModal] = useState(false)
+  let { acomodacoes, reservas } = useLoaderData();
+  const [modal, setModal] = useState(false);
+  const [modalDelete, setModalDelete] = useState({modal:false});
+  const [nome, setNome] = useState('');
+  const [tarefas, setTarefas] = useState([])
+
+
+  const handleFetch = async () => {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
+    try {
+      const response = await axios.get(
+        baseUrl + `/tarefas/listarTarefas`
+      );
+      const data = response.data;
+      setTarefas(data);
+
+    } catch (error) {
+      console.log(error);
+      throw new Error(error);
+    }
+  };     
+  const handleDelete = async (id) => {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
+    try {
+      const response = await axios.delete(
+        baseUrl + `/tarefas/deletarTarefa/${id}`
+      );
+      const data = response.data;
+      setTarefas(data);
+      setModalDelete({modal:false})
+      
+    } catch (error) {
+      console.log(error);
+      throw new Error(error);
+    }
+  };     
+  const handlePost = async (nome) => {
+    const baseUrl = import.meta.env.VITE_API_BASE_URL;
+
+    try {
+      const response = await axios.post(
+        baseUrl + `/tarefas/criarTarefa`, {nome}
+      );
+      setModal(false)
+    } catch (error) {
+      console.log(error);
+      throw new Error(error);
+    }
+  };     
+
+  useEffect(()=>{
+    handleFetch()
+  },[])
 
   return (
     <>
@@ -88,11 +142,31 @@ export default function VisaoGeral() {
             </Card>
           </div>
           <Card orientation="horizontal" style={{ width: "100%" }}>
-            <section className={$.pending_tasks}>
-              <Text type="Title1" fontFamily="black">
-                Tarefas Pendentes
-              </Text>
-              <Button onClick={()=>{setModal(true)}}> + Criar </Button>
+            <section>
+              <div className={$.pending_tasks}>
+                <Text type="Title1" fontFamily="black">
+                  Tarefas Pendentes
+                </Text>
+                <Button
+                  onClick={() => {
+                    setModal(true);
+                  }}
+                >
+                  {" "}
+                  + Criar{" "}
+                </Button>
+              </div>
+              <div style={{display: "flex", gap: '10px', flexWrap: 'wrap', width: '100%'}}>
+                {tarefas.length > 0 &&
+              tarefas.map((a)=>{
+                return(
+                <Button style={{width:'fit-content'}} onClick={()=>{setModalDelete({id: a.tarefa_id, modal: true})}}>{a.nome}</Button>
+              )
+              })
+              
+              }
+              </div>
+              
             </section>
           </Card>
         </div>
@@ -104,12 +178,12 @@ export default function VisaoGeral() {
             <li className={$.reserves_by_type}>
               <Text type="Title2">Totais:</Text>
               <div style={{ display: "flex", gap: "1rem" }}>
-                <Text type="Title1">100</Text>
+                <Text type="Title1">{reservas.length}</Text>
                 <div className={$.block_mini_blue} />
               </div>
             </li>
-            <ProgressBar color="#6474BD" progress="100" />
-            <hr className={$.hr} />
+            <ProgressBar color="#6474BD" progress={100} />
+            {/* <hr className={$.hr} />
 
             <li className={$.reserves_by_type}>
               <Text type="Title2">Confirmadas:</Text>
@@ -138,7 +212,7 @@ export default function VisaoGeral() {
                 <div className={$.block_mini_red} />
               </div>
             </li>
-            <ProgressBar color="#FE6D4C" progress="24" />
+            <ProgressBar color="#FE6D4C" progress="24" /> */}
             <hr className={$.hr} />
 
             <li className={$.reserves_by_type}>
@@ -157,11 +231,25 @@ export default function VisaoGeral() {
                 alignItems: "center",
               }}
             >
-              <FormControlInput placeholder={"Ex: Limpeza...."} />
-              <Button style={{ width: "20px" }}>Criar</Button>
+              <FormControlInput placeholder={"Ex: Limpeza...."} onChange={({target})=>{setNome(target.value)}}/>
+              <Button style={{ width: "20px" }} onClick={()=>{handlePost(nome)}}>Criar</Button>
             </div>
           </Model>
         )}
+        {modalDelete.modal && (
+              <Model
+                title="Remover tarefa"
+                text="Deseja realmente remover essa tarefa? Essa escolha é permanente."
+              >
+                <Button height="50px" className={$.custom_modal_btn} onClick={()=>{setModalDelete({modal:false})}}>
+                  Cancelar
+                </Button>
+                <Button height="50px" onClick={()=>{handleDelete(modalDelete.id)}}>
+                  Remover
+                </Button>
+              </Model>
+            )
+          }
       </div>
     </>
   );
