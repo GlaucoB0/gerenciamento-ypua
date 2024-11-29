@@ -2,8 +2,13 @@ import $ from "./Login.module.sass";
 import Card from "src/components/Card/Card";
 import TitleArea from "src/components/TitleArea/TitleArea";
 import Form from "src/components/Form";
+import formatarDado from "src/hooks/mask.js";
+import { useState } from "react";
 
 const Login = () => {
+
+  const [cpf, setCpf] = useState('')
+
   return (
     <main className={$.main}>
       <Card padding={2.5}>
@@ -20,6 +25,10 @@ const Login = () => {
               type="text"
               placeholder="Insira o seu CPF"
               iconSrc="src/assets/images/icon-user.png"
+              id={"cpf"}
+              onChange={(e) => {
+                setCpf(formatarDado("cpf", e.target));
+              }}
             />
           </Form.Control.Root>
           <Form.Control.Root name="senha" label="Senha">
