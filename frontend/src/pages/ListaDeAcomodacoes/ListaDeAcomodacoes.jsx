@@ -35,7 +35,7 @@ const ListaDeAcomodacoes = () => {
   return (
     <>
       <Titulo links={["Lista de Acomodações"]} />
-      <div className={$.containerAcomodacoes}>
+      <div className={$.containerAcomodacoes} style={{marginTop: '-5px'}}>
         {!removeLoading && <div></div>}
         {lista.length > 0 &&
           lista.map((a) => {
