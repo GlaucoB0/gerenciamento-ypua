@@ -42,7 +42,7 @@ const CriarFuncionario = () => {
                             <Form.Control.Input givenType={"password"} placeholder={"Senha"} />
                         </Form.Control.Root>
                     </div>
-                    <Button style={{position: 'absolute', right: '50px', bottom: '30px', width: '150px'}}> Criar </Button>
+                    <Button type={'submit'} style={{position: 'absolute', right: '50px', bottom: '30px', width: '150px'}}> Criar </Button>
                 </Form.Root>
             </div>
         </>

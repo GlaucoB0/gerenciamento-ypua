@@ -17,7 +17,7 @@ async function criarFuncionarioAction({ request }) {
     try {
         const token = localStorage.getItem('user')
         const response = await axios.post(`${baseUrl}/funcionarios/criarFuncionarios`, submission, { headers: { Authorization: token.split(" ")[1] } })
-
+        console.log(response)
         // return redirect('/dashboard')
         return "null"
     } catch (error) {
