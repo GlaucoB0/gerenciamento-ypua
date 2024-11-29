@@ -35,16 +35,6 @@ const ListaDeAcomodacoes = () => {
   return (
     <>
       <Titulo links={["Lista de Acomodações"]} />
-      <div style={{ display: "flex", gap: "10px" }}>
-        <Filtros.Root setter={setLista} value={lista} color={"yellow"}>
-          <Filtros.Img img={"icon-casa-simple.png"} />
-          <Text color="white" fontFamily="bold">Geral</Text>
-        </Filtros.Root>
-        <Filtros.Root setter={setLista} value={lista} color={"gray"}>
-          <Filtros.Img img={"icon-verify.png"} />
-          <Text color="gray" fontFamily="bold">Disponiveis</Text>
-        </Filtros.Root>
-      </div>
       <div className={$.containerAcomodacoes}>
         {!removeLoading && <div></div>}
         {lista.length > 0 &&

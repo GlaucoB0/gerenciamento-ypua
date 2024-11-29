@@ -43,16 +43,6 @@ export default function ListaDeHospedes() {
   return (
     <>
       <Titulo links={["Lista de Hospedes"]} />
-      <div style={{ display: "flex", gap: "10px" }}>
-        <Filtros.Root value={lista} color={"red"}>
-          <Filtros.Img img={"icon-casa-simple.png"} />
-          <Text color="white">Criar</Text>
-        </Filtros.Root>
-        <Filtros.Root value={lista} color={"gray"}>
-          <Filtros.Img img={"icon-verify.png"} />
-          <Text color="gray" fontFamily="bold">Disponiveis</Text>
-        </Filtros.Root>
-      </div>
       <ul className={$.list}>
         {lista.map((a, i) => (
           <li key={i}>
