@@ -5,8 +5,10 @@ import Form from "src/components/Form";
 import formatarDado from "src/hooks/mask.js";
 import { useState } from "react";
 
-const Login = () => {
+import _iconUser from "src/assets/images/icon-user.png"
+import _iconEye from "src/assets/images/icon-eye.png"
 
+const Login = () => {
   const [cpf, setCpf] = useState('')
 
   return (
@@ -24,8 +26,9 @@ const Login = () => {
               width="380px"
               type="text"
               placeholder="Insira o seu CPF"
-              iconSrc="src/assets/images/icon-user.png"
+              iconSrc={_iconUser}
               id={"cpf"}
+              value={cpf}
               onChange={(e) => {
                 setCpf(formatarDado("cpf", e.target));
               }}
@@ -37,7 +40,7 @@ const Login = () => {
               width="380px"
               type="password"
               placeholder="Insira a sua senha"
-              iconSrc="src/assets/images/icon-eye.png"
+              iconSrc={_iconEye}
             />
           </Form.Control.Root>
           <Form.Submit isEnabled={true}>Entrar</Form.Submit>

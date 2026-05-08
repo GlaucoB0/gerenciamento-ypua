@@ -11,9 +11,6 @@ async function criarReservaAction({ request }) {
     headers: { Authorization: token },
   });
 
-
-  console.log(token);
-
   let today = new Date();
   const data = today.toISOString();
 
@@ -36,7 +33,6 @@ async function criarReservaAction({ request }) {
     check_in: `${formData.get("check_in")}T00:00:00Z`,
     check_out: `${formData.get("check_out")}T00:00:00Z`,
   };
-  console.log(submission);
 
   try {
     await axios.post(

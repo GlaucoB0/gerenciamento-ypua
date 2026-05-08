@@ -1,11 +1,8 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Acomodacao from "src/components/Acomodacao";
 import Titulo from "src/components/Titulo/Titulo";
 import $ from "./ListaDeAcomodacoes.module.sass";
-import Text from "src/components/Text/Text";
-import { redirect } from "react-router-dom";
-import Filtros from "src/components/Filtrar";
 
 const ListaDeAcomodacoesLoader = (setter, loading) => {
   const baseUrl = import.meta.env.VITE_API_BASE_URL;

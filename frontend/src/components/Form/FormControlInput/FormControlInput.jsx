@@ -7,6 +7,7 @@ const FormControlInput = ({
   type: givenType,
   placeholder,
   iconSrc,
+  value,
   onChange,
   width = "100%",
 }) => {
@@ -26,7 +27,7 @@ const FormControlInput = ({
       <img
         className={styled.icon}
         src={iconSrc}
-        alt={iconSrc && `Ícone do campo style{label || "de entrada"}`}
+        alt={iconSrc && `Ícone do campo ${label || "de entrada"}`}
         draggable={false}
         onClick={handleImgClick}
         style={imgVariableStyle}
@@ -38,6 +39,7 @@ const FormControlInput = ({
         type={currentType}
         name={name}
         placeholder={placeholder}
+        value={value}
       />
     </div>
   );
